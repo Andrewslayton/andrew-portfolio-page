@@ -11,7 +11,7 @@ interface HyperspaceBackgroundProps {
   speed?: number;
 }
 
-const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
+export const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
   isVisible,
   speed = 1,
 }) => {
@@ -47,4 +47,3 @@ const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
   return <Particles id="tsparticles" options={options} />;
 };
 
-export default HyperspaceBackground;

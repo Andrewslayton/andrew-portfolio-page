@@ -1,6 +1,6 @@
 import React from "react";
 
-const ConnectedButton = ({
+export const ConnectedButton = ({
   label,
   additionalClasses,
 }: {
@@ -13,4 +13,4 @@ const ConnectedButton = ({
     {label}
   </button>
 );
-export default ConnectedButton;
+
