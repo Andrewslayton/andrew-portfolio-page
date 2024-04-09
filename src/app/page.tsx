@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import ConnectedButton from "./components/expand/page";
 import HyperspaceBackground from "./components/background/page";
 import React, { useState } from "react";
@@ -69,4 +69,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
