@@ -1,0 +1,10 @@
+/* HomePage.css */
+.line::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 50%;
+    background-color: #000;
+    left: 50%;
+    top: 0;
+}
