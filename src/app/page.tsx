@@ -1,12 +1,31 @@
 "use client";
-import { ConnectedButton } from "./components/expand/page";
-import { HyperspaceBackground } from "./components/background/page";
+import { ConnectedButton } from "./components/expand/connectButton";
+import { HyperspaceBackground } from "./components/background/animatedback";
 import React, { useState } from "react";
+import Experience from "./components/experience/experiences";
+import Projects from "./components/projects/projects";
+import Education from "./components/education/education";
+import Aboutme from "./components/about/aboutme";
+
 
 const HomePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [currentView, setCurrentView] = useState("home");
   
-
+const renderContent = () => {
+  switch (currentView) {
+    case "experience":
+      return <Experience />;
+    case "projects":
+      return <Projects />;
+    case "education":
+      return <Education />;
+    case "about":
+      return <Aboutme />;
+    default:
+      return null; 
+  }
+};
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
@@ -14,6 +33,9 @@ const HomePage = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-black relative">
       <HyperspaceBackground isVisible={isExpanded} />
+
+
+
 
       <div className="z-10 flex flex-wrap items-center justify-center space-x-4 space-y-20">
         <div
