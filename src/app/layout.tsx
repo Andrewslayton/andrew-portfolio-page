@@ -24,7 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </button>
             {isDropdownOpen && (
               <div className="absolute left-0 mt-2 w-90 bg-white text-black rounded shadow-lg py-2">
-                <p className="px-4 py-2 border-b">Phone: 586-846-7969</p>
                 <p className="px-4 py-2 border-b">Email: andrewslaywork@gmail.com</p>
                 <a
                   href="https://github.com/Andrewslayton"
