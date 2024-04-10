@@ -17,7 +17,7 @@ const HomePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
     <div className="flex items-center justify-center h-screen bg-black ">
-      {/* <HyperspaceBackground isVisible = {isExpanded}/> */}
+      <HyperspaceBackground isVisible = {isExpanded}/>
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
@@ -29,7 +29,7 @@ const HomePage = () => {
       {!isExpanded && (
         <div className="absolute top-0 left-0 w-full h-screen flex justify-center items-center">
           <div className="w-1/2 h-1/2">
-            <Base isVisible />
+            <Base />
           </div>
         </div>
       )}

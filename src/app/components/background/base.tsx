@@ -6,28 +6,17 @@ import { loadPolygonMaskPlugin } from "@tsparticles/plugin-polygon-mask";
 import { tsParticles } from "@tsparticles/engine";
 import { initParticlesEngine } from "@tsparticles/react";
 
-interface headerBakgroundProps {
-  isVisible: boolean;
-}
 
-export const Base: React.FC<headerBakgroundProps> = ({ isVisible }) => {
-  const [init, setInit] = useState(false);
+export const Base: React.FC = ({ }) => {
   useEffect(() => {
-    let isCancelled = false;
     initParticlesEngine(async () => {
       await loadPolygonMaskPlugin(tsParticles);
       await loadSlim(tsParticles);
-      if (!isCancelled) {
-        setInit(true);
-      }
+     
     });
     return () => {
-      isCancelled = true;
     };
   }, []);
-  if (!init) {
-    return null;
-  }
   const options = {
     fullScreen: {
       enable: false,
