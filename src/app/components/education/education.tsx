@@ -42,10 +42,7 @@ export function Education() {
 
   return (
     <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full text-white ">
-      <h1 className="text-lg sm:text-xl font-bold p-3 text-center">
-        Academic Background
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 ">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {courses.map((course, index) => (
           <div key={index} className="bg-black rounded-lg shadow-lg p-4">
             <h2 className="text-base sm:text-lg md:text-xl font-bold overflow-auto">

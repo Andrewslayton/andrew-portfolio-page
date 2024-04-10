@@ -25,7 +25,7 @@ const HomePage = () => {
       )}
       {!isExpanded && (
         <div className="absolute top-0 left-0 w-full h-screen flex justify-center items-center">
-          <div className="w-1/2 h-1/2">
+          <div className="w-full h-1/5">
             <Base />
           </div>
         </div>
@@ -33,7 +33,7 @@ const HomePage = () => {
 
       {isExpanded && (
         <div className="w-3/4 sm:w-1/2 relative h-screen bg-black">
-          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
+          <div className="overflow-auto p-10 bg-opacity-0 bg-black text-white rounded-lg max-h-1/4">
             <Aboutme/>
           </div>
           <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
