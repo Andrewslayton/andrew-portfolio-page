@@ -5,16 +5,18 @@ import {Aboutme} from "./components/about/aboutme";
 import {Education} from "./components/education/education";
 import {Experience} from "./components/experience/experiences";
 import {Projects} from "./components/projects/projects";
+import {ProjectsHeader} from "./components/projects/projectsHead";
+import {ExperienceHeader} from "./components/experience/experienceHead";
+import {Base} from "./components/background/base";
 import { ConnectedButton } from "./components/expand/connectButton";
 import Image from "next/image";
+import { EducationHeader } from "./components/education/educationHead";
 
 const HomePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-
   return (
-    <div className="flex items-center justify-center h-screen bg-black relative">
-      <HyperspaceBackground isVisible={isExpanded} />
-
+    <div className="flex items-center justify-center h-screen bg-black ">
+      <HyperspaceBackground isVisible = {isExpanded}/>
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
@@ -23,23 +25,29 @@ const HomePage = () => {
           Dive In
         </button>
       )}
+      {!isExpanded && (
+        <div className="absolute top-0 left-0 w-full h-screen flex justify-center items-center">
+          <div className="w-1/2 h-1/2">
+            <Base isVisible />
+          </div>
+        </div>
+      )}
 
       {isExpanded && (
-        <div className="w-2/4 relative h-screen ">
+        <div className="w-2/4 relative h-screen bg-black">
           <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
-            <Image src="/drawing.svg" alt="Andrew Slayton" width={200} height={200} className="rounded-full" />
-            <Aboutme />
+            <Aboutme/>
           </div>
           <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
-            <h2 className="text-2xl mb-4">Experience</h2>
+            <ExperienceHeader />
             <Experience />
           </div>
           <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
-            <h2 className="text-2xl mb-4">Education</h2>
+            <EducationHeader />
             <Education />
           </div>
           <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
-            <h2 className="text-2xl mb-4">Projects</h2>
+            <ProjectsHeader />
             <Projects />
           </div>
         </div>

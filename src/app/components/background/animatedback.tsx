@@ -4,7 +4,7 @@ import { Particles } from "@tsparticles/react";
 import { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { loadTrianglesPreset } from "@tsparticles/preset-triangles";
-import { Engine } from "@tsparticles/engine";
+import { Engine, FullScreen } from "@tsparticles/engine";
 
 interface HyperspaceBackgroundProps {
   isVisible: boolean;
@@ -37,6 +37,13 @@ export const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
 
   const options = {
     preset: "triangles",
+    fpsLimit: 60,
+    background: {
+      color: "#000000",
+    },
+    FullScreen: {
+      enable: true,
+    },
     particles: {
       move: {
         speed: speed,
