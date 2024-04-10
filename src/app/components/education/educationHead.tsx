@@ -31,7 +31,7 @@ export const EducationHeader: React.FC = ({}) => {
       enable: false,
       zIndex: -1,
     },
-    fpsLimit: 60,
+    fpsLimit: 15,
     interactivity: {
       events: {
         onHover: {
@@ -60,11 +60,11 @@ export const EducationHeader: React.FC = ({}) => {
       },
       move: {
         enable: true,
-        outModes: "bounce",
+        outModes: "bounce" as const,
         speed: { min: 0.5, max: 1 },
       },
       number: {
-        value: 140,
+        value: 100,
       },
       opacity: {
         animation: {

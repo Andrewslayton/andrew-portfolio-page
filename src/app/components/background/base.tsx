@@ -47,9 +47,9 @@ export const Base: React.FC<headerBakgroundProps> = ({ isVisible }) => {
           duration: 2,
           opacity: 8,
           size: 6,
-          speed: 3
-        }
-      }
+          speed: 3,
+        },
+      },
     },
 
     particles: {
@@ -72,7 +72,7 @@ export const Base: React.FC<headerBakgroundProps> = ({ isVisible }) => {
       },
       move: {
         enable: true,
-        outModes: "bounce",
+        outModes: "bounce" as const,
         speed: { min: 0.5, max: 1 },
       },
       number: {

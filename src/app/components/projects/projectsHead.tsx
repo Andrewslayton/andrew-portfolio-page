@@ -32,8 +32,7 @@ export const ProjectsHeader: React.FC = ({ }) => {
       zIndex: -1,
     },
     fpsLimit: 15,
-    interactivity: {
-    },
+    interactivity: {},
     particles: {
       color: {
         value: "#ff0000",
@@ -54,11 +53,11 @@ export const ProjectsHeader: React.FC = ({ }) => {
       },
       move: {
         enable: true,
-        outModes: "bounce",
+        outModes: "bounce" as const,
         speed: { min: 0.5, max: 1 },
       },
       number: {
-        value: 200,
+        value: 100,
       },
       opacity: {
         animation: {

@@ -7,6 +7,7 @@ import { tsParticles } from "@tsparticles/engine";
 import { initParticlesEngine } from "@tsparticles/react";
 
 
+
 export const ExperienceHeader: React.FC = ({}) => {
   const [init, setInit] = useState(false);
   useEffect(() => {
@@ -28,7 +29,6 @@ export const ExperienceHeader: React.FC = ({}) => {
   const options = {
     fullScreen: {
       enable: false,
-      zIndex: -1,
     },
     fpsLimit: 15,
     interactivity: {
@@ -38,7 +38,17 @@ export const ExperienceHeader: React.FC = ({}) => {
           mode: "bubble",
         },
       },
+      modes: {
+        bubble: {
+          distance: 40,
+          duration: 2,
+          opacity: 8,
+          size: 6,
+          speed: 3,
+        },
+      },
     },
+
     particles: {
       color: {
         value: "#ff0000",
@@ -59,11 +69,11 @@ export const ExperienceHeader: React.FC = ({}) => {
       },
       move: {
         enable: true,
-        outModes: "bounce",
+        outModes: "bounce" as const,
         speed: { min: 0.5, max: 1 },
       },
       number: {
-        value: 200,
+        value: 100,
       },
       opacity: {
         animation: {

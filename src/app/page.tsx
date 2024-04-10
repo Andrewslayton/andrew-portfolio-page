@@ -11,12 +11,13 @@ import {Base} from "./components/background/base";
 import { ConnectedButton } from "./components/expand/connectButton";
 import Image from "next/image";
 import { EducationHeader } from "./components/education/educationHead";
+import { tsParticles } from "@tsparticles/engine";
 
 const HomePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
     <div className="flex items-center justify-center h-screen bg-black ">
-      <HyperspaceBackground isVisible = {isExpanded}/>
+      {/* <HyperspaceBackground isVisible = {isExpanded}/> */}
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
