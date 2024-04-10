@@ -4,7 +4,7 @@ import { Particles } from "@tsparticles/react";
 import { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { loadTrianglesPreset } from "@tsparticles/preset-triangles";
-import { Engine } from "@tsparticles/engine";
+import { Engine, FullScreen } from "@tsparticles/engine";
 
 interface HyperspaceBackgroundProps {
   isVisible: boolean;
@@ -15,28 +15,31 @@ export const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
   isVisible,
   speed = 1,
 }) => {
-  const [init, setInit] = useState(false);
 
   useEffect(() => {
     let isCancelled = false;
     initParticlesEngine(async (engine: Engine) => {
-      await loadSlim(engine);
       await loadTrianglesPreset(engine);
-      if (!isCancelled) {
-        setInit(true);
-      }
+     
     });
     return () => {
       isCancelled = true;
     };
   }, []);
 
-  if (!init || !isVisible) {
+  if ( !isVisible) {
     return null;
   }
 
   const options = {
     preset: "triangles",
+    fpsLimit: 60,
+    background: {
+      color: "#000000",
+    },
+    FullScreen: {
+      enable: true,
+    },
     particles: {
       move: {
         speed: speed,
@@ -44,6 +47,6 @@ export const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
     },
   };
 
-  return <Particles id="tsparticles" options={options} />;
+  return <Particles id="tsparticlesa" options={options} />;
 };
 

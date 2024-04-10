@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tsparticles/engine": "^3.3.0",
+    "@tsparticles/plugin-polygon-mask": "^3.3.0",
     "@tsparticles/preset-hyperspace": "^3.0.2",
     "@tsparticles/preset-links": "^3.0.2",
     "@tsparticles/preset-triangles": "^3.0.2",
