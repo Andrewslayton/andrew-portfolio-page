@@ -76,7 +76,7 @@ export const Base: React.FC = ({ }) => {
         blink: false,
         color: "#ff0000",
         consent: false,
-        distance: 20,
+        distance: 15,
         enable: true,
         opacity: 0.5,
         width: 0.5,
@@ -84,10 +84,10 @@ export const Base: React.FC = ({ }) => {
       move: {
         enable: true,
         outModes: "bounce" as const,
-        speed: 0.3,
+        speed: 0.05,
       },
       number: {
-        value: 200,
+        value: 600,
       },
       opacity: {
         animation: {
@@ -116,8 +116,8 @@ export const Base: React.FC = ({ }) => {
         enable: true,
         stroke: {
           color: "#fff",
-          width: 0.3,
-          opacity: 0.2,
+          width: 0.1,
+          opacity: 0.3,
         },
       },
       move: {
