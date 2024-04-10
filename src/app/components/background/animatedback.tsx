@@ -15,23 +15,19 @@ export const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
   isVisible,
   speed = 1,
 }) => {
-  const [init, setInit] = useState(false);
 
   useEffect(() => {
     let isCancelled = false;
     initParticlesEngine(async (engine: Engine) => {
-      await loadSlim(engine);
       await loadTrianglesPreset(engine);
-      if (!isCancelled) {
-        setInit(true);
-      }
+     
     });
     return () => {
       isCancelled = true;
     };
   }, []);
 
-  if (!init || !isVisible) {
+  if ( !isVisible) {
     return null;
   }
 
@@ -51,6 +47,6 @@ export const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
     },
   };
 
-  return <Particles id="tsparticles" options={options} />;
+  return <Particles id="tsparticlesa" options={options} />;
 };
 

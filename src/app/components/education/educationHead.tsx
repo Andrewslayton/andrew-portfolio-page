@@ -14,7 +14,6 @@ export const EducationHeader: React.FC = ({}) => {
     let isCancelled = false;
     initParticlesEngine(async () => {
       await loadPolygonMaskPlugin(tsParticles);
-      await loadSlim(tsParticles);
       if (!isCancelled) {
         setInit(true);
       }
@@ -29,7 +28,6 @@ export const EducationHeader: React.FC = ({}) => {
   const options = {
     fullScreen: {
       enable: false,
-      zIndex: -1,
     },
     fpsLimit: 15,
     interactivity: {
@@ -39,7 +37,17 @@ export const EducationHeader: React.FC = ({}) => {
           mode: "bubble",
         },
       },
+      modes: {
+        bubble: {
+          distance: 40,
+          duration: 2,
+          opacity: 8,
+          size: 6,
+          speed: 3,
+        },
+      },
     },
+
     particles: {
       color: {
         value: "#ff0000",
@@ -94,7 +102,7 @@ export const EducationHeader: React.FC = ({}) => {
         stroke: {
           color: "#fff",
           width: 0.4,
-          opacity: 0.2,
+          opacity: 0.3,
         },
       },
       move: {

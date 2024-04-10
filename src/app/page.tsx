@@ -8,10 +8,7 @@ import {Projects} from "./components/projects/projects";
 import {ProjectsHeader} from "./components/projects/projectsHead";
 import {ExperienceHeader} from "./components/experience/experienceHead";
 import {Base} from "./components/background/base";
-import { ConnectedButton } from "./components/expand/connectButton";
-import Image from "next/image";
 import { EducationHeader } from "./components/education/educationHead";
-import { tsParticles } from "@tsparticles/engine";
 
 const HomePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);

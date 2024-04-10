@@ -9,30 +9,45 @@ import { initParticlesEngine } from "@tsparticles/react";
 
 
 export const ProjectsHeader: React.FC = ({ }) => {
-  const [init, setInit] = useState(false);
+  const [init1, setInit1] = useState(false);
   useEffect(() => {
     let isCancelled = false;
     initParticlesEngine(async () => {
       await loadPolygonMaskPlugin(tsParticles);
-      await loadSlim(tsParticles);
       if (!isCancelled) {
-        setInit(true);
+        setInit1(true);
       }
     });
     return () => {
       isCancelled = true;
     };
   }, []);
-  if (!init) {
+  if (!init1) {
     return null;
   }
   const options = {
     fullScreen: {
       enable: false,
-      zIndex: -1,
     },
     fpsLimit: 15,
-    interactivity: {},
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: "bubble",
+        },
+      },
+      modes: {
+        bubble: {
+          distance: 40,
+          duration: 2,
+          opacity: 8,
+          size: 6,
+          speed: 3,
+        },
+      },
+    },
+
     particles: {
       color: {
         value: "#ff0000",
@@ -86,8 +101,8 @@ export const ProjectsHeader: React.FC = ({ }) => {
         enable: true,
         stroke: {
           color: "#fff",
-          width: 0.3,
-          opacity: 0.2,
+          width: 0.4,
+          opacity: 0.3,
         },
       },
       move: {

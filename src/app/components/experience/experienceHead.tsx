@@ -9,23 +9,22 @@ import { initParticlesEngine } from "@tsparticles/react";
 
 
 export const ExperienceHeader: React.FC = ({}) => {
-  const [init, setInit] = useState(false);
-  useEffect(() => {
-    let isCancelled = false;
-    initParticlesEngine(async () => {
-      await loadPolygonMaskPlugin(tsParticles);
-      await loadSlim(tsParticles);
-      if (!isCancelled) {
-        setInit(true);
-      }
-    });
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
-  if (!init) {
-    return null;
-  }
+   const [init2, setInit2] = useState(false);
+   useEffect(() => {
+     let isCancelled = false;
+     initParticlesEngine(async () => {
+       await loadPolygonMaskPlugin(tsParticles);
+       if (!isCancelled) {
+         setInit2(true);
+       }
+     });
+     return () => {
+       isCancelled = true;
+     };
+   }, []);
+   if (!init2) {
+     return null;
+   }
   const options = {
     fullScreen: {
       enable: false,
@@ -103,7 +102,7 @@ export const ExperienceHeader: React.FC = ({}) => {
         stroke: {
           color: "#fff",
           width: 0.4,
-          opacity: 0.2,
+          opacity: 0.3,
         },
       },
       move: {

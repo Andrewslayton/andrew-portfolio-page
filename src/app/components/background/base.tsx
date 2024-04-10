@@ -8,21 +8,29 @@ import { initParticlesEngine } from "@tsparticles/react";
 
 
 export const Base: React.FC = ({ }) => {
-  useEffect(() => {
-    initParticlesEngine(async () => {
-      await loadPolygonMaskPlugin(tsParticles);
-      await loadSlim(tsParticles);
-     
-    });
-    return () => {
-    };
-  }, []);
+   const [init, setInit] = useState(false);
+   useEffect(() => {
+     let isCancelled = false;
+     initParticlesEngine(async () => {
+       await loadPolygonMaskPlugin(tsParticles);
+        await loadSlim(tsParticles);
+       if (!isCancelled) {
+         setInit(true);
+       }
+     });
+     return () => {
+       isCancelled = true;
+     };
+   }, []);
+   if (!init) {
+     return null;
+   }
   const options = {
     fullScreen: {
       enable: false,
       zIndex: -1,
     },
-    fpsLimit: 60,
+    fpsLimit: 15,
     interactivity: {
       events: {
         onHover: {
@@ -54,7 +62,7 @@ export const Base: React.FC = ({ }) => {
         blink: false,
         color: "#ff0000",
         consent: false,
-        distance: 30,
+        distance: 20,
         enable: true,
         opacity: 0.5,
         width: 0.5,
@@ -62,10 +70,10 @@ export const Base: React.FC = ({ }) => {
       move: {
         enable: true,
         outModes: "bounce" as const,
-        speed: { min: 0.5, max: 1 },
+        speed: 0.3,
       },
       number: {
-        value: 500,
+        value: 200,
       },
       opacity: {
         animation: {
@@ -82,7 +90,7 @@ export const Base: React.FC = ({ }) => {
       size: {
         animation: {
           enable: false,
-          speed: 40,
+          speed: 10,
           sync: false,
         },
         random: true,
@@ -104,7 +112,7 @@ export const Base: React.FC = ({ }) => {
       inline: {
         arrangement: "equidistant",
       },
-      scale: 3,
+      scale: 2,
       type: "inline",
       url: "/test.svg",
     },
