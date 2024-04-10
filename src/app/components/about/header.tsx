@@ -11,18 +11,32 @@ import { initParticlesEngine } from "@tsparticles/react";
 
 export const AboutHeader: React.FC = ({ }) => {
     const [init, setInit] = useState(false);
-     useEffect(() => {
-       let isCancelled = false;
-       initParticlesEngine(async () => {
-         await loadPolygonMaskPlugin(tsParticles);
-         if (!isCancelled) {
-           setInit(true);
-         }
-       });
-       return () => {
-         isCancelled = true;
-       };
-     }, []);
+    const [scale, setScale] = useState(3);
+    useEffect(() => {
+      let isCancelled = false;
+      const updateScale = () => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth < 768) {
+          setScale(1);
+        } else {
+          setScale(2);
+        }
+      };
+      updateScale();
+
+      window.addEventListener("resize", updateScale);
+
+      initParticlesEngine(async () => {
+        await loadPolygonMaskPlugin(tsParticles);
+        if (!isCancelled) {
+          setInit(true);
+        }
+      });
+      return () => {
+        isCancelled = true;
+        window.removeEventListener("resize", updateScale);
+      };
+    }, []);
     if (!init ) 
     {
       return null;

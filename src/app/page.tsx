@@ -14,7 +14,7 @@ const HomePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
     <div className="flex items-center justify-center h-screen bg-black ">
-      <HyperspaceBackground isVisible = {isExpanded}/>
+      <HyperspaceBackground isVisible={isExpanded} />
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
@@ -32,11 +32,11 @@ const HomePage = () => {
       )}
 
       {isExpanded && (
-        <div className="w-3/4 sm:w-1/2 relative h-screen bg-black">
-          <div className="overflow-auto p-10 bg-opacity-0 bg-black text-white rounded-lg max-h-1/4">
-            <Aboutme/>
+        <div className="w- 4/5 sm:w-1/2 relative h-screen bg-black">
+          <div className="overflow-auto p-10  bg-opacity-0 bg-black text-white rounded-lg max-h-1/4">
+            <Aboutme />
           </div>
-          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
+          <div className="overflow-auto p-10 sm:p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
             <ExperienceHeader />
             <Experience />
           </div>

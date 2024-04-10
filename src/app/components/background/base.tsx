@@ -9,8 +9,21 @@ import { initParticlesEngine } from "@tsparticles/react";
 
 export const Base: React.FC = ({ }) => {
    const [init, setInit] = useState(false);
+   const [scale, setScale] = useState(3);
+ 
    useEffect(() => {
      let isCancelled = false;
+      const updateScale = () => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth < 1500) {
+          setScale(1);
+        } else {
+          setScale(2);
+        }
+      };
+      updateScale();
+
+      window.addEventListener("resize", updateScale);
      initParticlesEngine(async () => {
        await loadPolygonMaskPlugin(tsParticles);
         await loadSlim(tsParticles);
@@ -20,6 +33,7 @@ export const Base: React.FC = ({ }) => {
      });
      return () => {
        isCancelled = true;
+        window.removeEventListener("resize", updateScale)
      };
    }, []);
    if (!init) {
@@ -112,7 +126,7 @@ export const Base: React.FC = ({ }) => {
       inline: {
         arrangement: "equidistant",
       },
-      scale: 2,
+      scale: scale ,
       type: "inline",
       url: "/test.svg",
     },

@@ -10,8 +10,21 @@ import { initParticlesEngine } from "@tsparticles/react";
 
 export const ExperienceHeader: React.FC = ({}) => {
    const [init2, setInit2] = useState(false);
+   const [scale, setScale] = useState(3);
    useEffect(() => {
      let isCancelled = false;
+     const updateScale = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 768) {
+        setScale(1); 
+      } else {
+        setScale(3); 
+      }
+    };
+    updateScale();
+
+    window.addEventListener("resize", updateScale);
+
      initParticlesEngine(async () => {
        await loadPolygonMaskPlugin(tsParticles);
        if (!isCancelled) {
@@ -20,7 +33,9 @@ export const ExperienceHeader: React.FC = ({}) => {
      });
      return () => {
        isCancelled = true;
+       window.removeEventListener("resize", updateScale);
      };
+     
    }, []);
    if (!init2) {
      return null;
@@ -111,7 +126,7 @@ export const ExperienceHeader: React.FC = ({}) => {
       inline: {
         arrangement: "equidistant",
       },
-      scale: 3,
+      scale: scale,
       type: "inline",
       url: "/experience.svg",
     },

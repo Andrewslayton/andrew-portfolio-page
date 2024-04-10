@@ -10,18 +10,32 @@ import { initParticlesEngine } from "@tsparticles/react";
 
 export const ProjectsHeader: React.FC = ({ }) => {
   const [init1, setInit1] = useState(false);
-  useEffect(() => {
-    let isCancelled = false;
-    initParticlesEngine(async () => {
-      await loadPolygonMaskPlugin(tsParticles);
-      if (!isCancelled) {
-        setInit1(true);
-      }
-    });
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
+   const [scale, setScale] = useState(3);
+   useEffect(() => {
+     let isCancelled = false;
+     const updateScale = () => {
+       const screenWidth = window.innerWidth;
+       if (screenWidth < 768) {
+         setScale(1);
+       } else {
+         setScale(3);
+       }
+     };
+     updateScale();
+
+     window.addEventListener("resize", updateScale);
+
+     initParticlesEngine(async () => {
+       await loadPolygonMaskPlugin(tsParticles);
+       if (!isCancelled) {
+         setInit1(true);
+       }
+     });
+     return () => {
+       isCancelled = true;
+       window.removeEventListener("resize", updateScale);
+     };
+   }, []);
   if (!init1) {
     return null;
   }
@@ -111,7 +125,7 @@ export const ProjectsHeader: React.FC = ({ }) => {
       inline: {
         arrangement: "equidistant",
       },
-      scale: 3,
+      scale: scale,
       type: "inline",
       url: "/projects.svg",
     },

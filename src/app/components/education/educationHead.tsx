@@ -10,8 +10,21 @@ import { initParticlesEngine } from "@tsparticles/react";
 
 export const EducationHeader: React.FC = ({}) => {
   const [init, setInit] = useState(false);
+  const [scale, setScale] = useState(3);
   useEffect(() => {
     let isCancelled = false;
+    const updateScale = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 768) {
+        setScale(1);
+      } else {
+        setScale(3);
+      }
+    };
+    updateScale();
+
+    window.addEventListener("resize", updateScale);
+
     initParticlesEngine(async () => {
       await loadPolygonMaskPlugin(tsParticles);
       if (!isCancelled) {
@@ -20,6 +33,7 @@ export const EducationHeader: React.FC = ({}) => {
     });
     return () => {
       isCancelled = true;
+      window.removeEventListener("resize", updateScale);
     };
   }, []);
   if (!init) {
@@ -111,7 +125,7 @@ export const EducationHeader: React.FC = ({}) => {
       inline: {
         arrangement: "equidistant",
       },
-      scale: 3,
+      scale: scale,
       type: "inline",
       url: "/education.svg",
     },
