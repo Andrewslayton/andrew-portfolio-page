@@ -1,27 +1,73 @@
-export function Projects() {
-   return (
-     <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full">
-       <h1 className="text-lg sm:text-xl font-bold  p-3 text-center">
-         Who Is Andrew Slayton
-       </h1>
-       <p className="text-sm sm:text-base ">
-         Andrew Slayton is an adventurist and an up and coming software
-         engineer. He has a love for exploration that spans back to his
-         childhood. He discovered his love for tinkering when he took apart his
-         XBOX 360 in 6th grade(and broke it). Once he discovered his passion for
-         tinkering with electronics he was set on computer science. Ever since
-         then he has been on a journey to simply learn more to tinker more.
-       </p>
-       <h1 className="text-lg sm:text-l font-bold  mb-2 mt-2 text-center">
-         Hobbies
-       </h1>
-       <p className="  text-sm sm:text-base">
-         As previously stated Andrew loves to adventure. He has been across the
-         United States including hiking in Arizona, snowboarding in Arizona, and
-         climbing in the Badlands. He plans to backpack across Eruope and live
-         in the mountains of Colorado in the future.
-       </p>
-     </div>
-   );
-}
+"use client";
+import React, { useState, useEffect } from "react";
 
+type GitHubProject = {
+  html_url: string;
+  name: string;
+  description: string | null;
+};
+
+export function Projects() {
+  // State to hold your projects
+  const [projects, setProjects] = useState<GitHubProject[]>([] as GitHubProject[]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch(
+          "https://api.github.com/users/Andrewslayton/repos?sort=created&per_page=3"
+        );
+        if (!response.ok) {
+          throw new Error("womp womp");
+        }
+        const data: GitHubProject[] = await response.json();
+        console.log(data);
+        setProjects(data);
+      } catch (error) {
+        
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  return (
+    <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full">
+      <div className="space-y-4">
+        <div className="bg-black rounded-lg shadow-lg p-4">
+          <a
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xl font-bold text-white hover:text-gray-300"
+          >
+            Project Name
+          </a>
+          <p className="text-sm text-white mt-2">
+            Project description goes here. This is a short summary of the
+            project, its goals, and technologies used.
+          </p>
+        </div>
+      </div>
+
+      <h2 className="text-lg sm:text-l font-bold mt-6 mb-2 text-center">
+        Most Recent Github Projects
+      </h2>
+      <div className="space-y-4">
+        {projects.map((project, index) => (
+          <div key={index} className="bg-black rounded-lg shadow-lg p-4">
+            <a
+              href={project.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl font-bold text-white hover:text-gray-300"
+            >
+              {project.name}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
