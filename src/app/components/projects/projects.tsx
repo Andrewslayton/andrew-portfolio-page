@@ -1,6 +1,6 @@
 export function Projects() {
   return (
-    <div className="bg-gray-500 p-5 rounded-lg overflow-auto h-full">
+    <div className="bg-gray-500 p-5 rounded-lg overflow-auto ">
       <h1 className="text-xl font-bold mb-4">About Me</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia

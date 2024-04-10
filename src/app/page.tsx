@@ -6,6 +6,7 @@ import {Education} from "./components/education/education";
 import {Experience} from "./components/experience/experiences";
 import {Projects} from "./components/projects/projects";
 import { ConnectedButton } from "./components/expand/connectButton";
+import Image from "next/image";
 
 const HomePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -24,17 +25,21 @@ const HomePage = () => {
       )}
 
       {isExpanded && (
-        <div className="grid grid-cols-2 grid-rows-2 gap-6 w-full h-full absolute">
-          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg">
+        <div className="w-2/4 relative h-screen ">
+          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
+            <Image src="/drawing.svg" alt="Andrew Slayton" width={200} height={200} className="rounded-full" />
             <Aboutme />
           </div>
-          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg">
+          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
+            <h2 className="text-2xl mb-4">Experience</h2>
             <Experience />
           </div>
-          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg">
+          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
+            <h2 className="text-2xl mb-4">Education</h2>
             <Education />
           </div>
-          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg">
+          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
+            <h2 className="text-2xl mb-4">Projects</h2>
             <Projects />
           </div>
         </div>
