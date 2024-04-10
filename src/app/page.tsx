@@ -18,9 +18,9 @@ const HomePage = () => {
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
-          className="z-10 absolute p-6 bg-blue-500 text-white rounded-full focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-out"
+          className="z-10 absolute p-6 bg-black text-white rounded-full focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-out"
         >
-          Dive In
+          Dive Deeper
         </button>
       )}
       {!isExpanded && (
@@ -32,7 +32,7 @@ const HomePage = () => {
       )}
 
       {isExpanded && (
-        <div className="w-2/4 relative h-screen bg-black">
+        <div className="w-3/4 sm:w-1/2 relative h-screen bg-black">
           <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
             <Aboutme/>
           </div>

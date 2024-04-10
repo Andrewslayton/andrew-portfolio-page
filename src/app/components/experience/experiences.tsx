@@ -1,26 +1,41 @@
 export function Experience() {
-   return (
-     <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full">
-       <h1 className="text-lg sm:text-xl font-bold  p-3 text-center">
-         Who Is Andrew Slayton
-       </h1>
-       <p className="text-sm sm:text-base ">
-         Andrew Slayton is an adventurist and an up and coming software
-         engineer. He has a love for exploration that spans back to his
-         childhood. He discovered his love for tinkering when he took apart his
-         XBOX 360 in 6th grade(and broke it). Once he discovered his passion for
-         tinkering with electronics he was set on computer science. Ever since
-         then he has been on a journey to simply learn more to tinker more.
-       </p>
-       <h1 className="text-lg sm:text-l font-bold  mb-2 mt-2 text-center">
-         Hobbies
-       </h1>
-       <p className="  text-sm sm:text-base">
-         As previously stated Andrew loves to adventure. He has been across the
-         United States including hiking in Arizona, snowboarding in Arizona, and
-         climbing in the Badlands. He plans to backpack across Eruope and live
-         in the mountains of Colorado in the future.
-       </p>
-     </div>
-   );
+  return (
+    <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full text-white">
+      <h1 className="text-lg sm:text-xl font-bold p-3 text-center">
+        Software Development
+      </h1>
+      <div className="space-y-4">
+        <div className="bg-black rounded-lg shadow-lg p-4">
+          <h2 className="text-xl sm:text-2xl font-bold">Compose</h2>
+          <p className="text-md font-semibold">
+            Software Developer / Jan 2024 - Current
+          </p>
+          <p className="text-sm sm:text-base mt-2">
+            Wrote and debugged software in a mixture of Next.js, React, and
+            Angular. Worked within a remote ecosystem where communication was of
+            upmost importance to push changes fast to appease clients.
+            Implemented safety features to ensure the companies website would
+            not be at risk of botted attacks.
+          </p>
+        </div>
+        <div className="bg-black rounded-lg shadow-lg p-4">
+          <h2 className="text-xl sm:text-2xl font-bold">Best Buy</h2>
+          <p className="text-md font-semibold">
+            Product Flow Specialist / Jan 2024 - Current
+          </p>
+          <p className="text-sm sm:text-base mt-2">
+          </p>
+        </div>
+        <div className="bg-black rounded-lg shadow-lg p-4">
+          <h2 className="text-xl sm:text-2xl font-bold">Canadian Lakes Organization</h2>
+          <p className="text-md font-semibold">
+            Groundskeeper / May 2022 - Aug 2024
+          </p>
+          <p className="text-sm sm:text-base mt-2">
+            Individually maintained one of 3 golf courses in the Canadian Lakes area.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
