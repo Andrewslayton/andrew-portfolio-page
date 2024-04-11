@@ -1,7 +1,7 @@
 import Image from "next/image";
 export function Aboutme() {
    return (
-     <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full font-inter ">
+     <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full  ">
        <h1 className="text-lg sm:text-xl font-bold  p-3 text-center ">
          Who Is Andrew Slayton
        </h1>

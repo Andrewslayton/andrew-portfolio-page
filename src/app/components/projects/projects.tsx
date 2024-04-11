@@ -12,13 +12,13 @@ const staticProjects = [
     name: "Lets Lift!",
     url: "https://github.com/Andrewslayton/LetsLift",
     description:
-      "React and NextJs web app allowing users to interact with a Google map, select workouts, and connect with other users at the same location who chose similar workouts. All information is stored in AWS DynamoDB.",
+      "React and NextJs web app allowing users to log in using google then interact with a Google map to select an exact location, select workouts, and connect with other users if they have selected the same muscle groups. All information is stored in AWS DynamoDB.",
   },
   {
     name: "PhoneChecker",
     url: "https://github.com/Andrewslayton/phoneChecker",
     description:
-      "Python executable program built upon real-time video processing to predict when a user is looking down at their phone, using an algorithm constructed through various testing. Includes a leaderboard hosted on Vercel.",
+      "Python executable program built upon real-time video processing to predict when a user is looking down at their phone, using an algorithm constructed through various testing. Includes a connected website to handle api requests and display leaderboard.",
   },
   {
     name: "Workout Social Media",
@@ -30,7 +30,7 @@ const staticProjects = [
     name: "Who Wants You",
     url: "https://github.com/Andrewslayton/WhoWantsYou",
     description:
-      "Python-Flask dating website with HTML, CSS, and SQLite, enabling users to create profiles, facilitating mutual matches.",
+      "Python-Flask dating website with HTML, CSS, and SQLite, enabling users to create profiles and browse through a selection of other profiles to facilitate a match.",
   },
   {
     name: "Discord Bots",

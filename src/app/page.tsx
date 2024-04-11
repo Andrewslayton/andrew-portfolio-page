@@ -14,14 +14,14 @@ const HomePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   
   return (
-    <div className="flex items-center justify-center h-screen bg-black ">
+    <div className="flex items-center justify-center h-screen bg-black font-mono text-lg ">
       <HyperspaceBackground isVisible={isExpanded} />
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
           className="z-10 absolute p-6 bg-black text-white rounded-full focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-out"
         >
-          Dive Deeper
+          Learn More
         </button>
       )}
       {!isExpanded && (
