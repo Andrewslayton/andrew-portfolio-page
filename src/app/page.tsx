@@ -33,7 +33,7 @@ const HomePage = () => {
       )}
 
       {isExpanded && (
-        <div className="w- 4/5 sm:w-1/2 relative h-screen bg-black text-base font-sans">
+        <div className="w- 4/5 sm:w-1/2 relative h-screen bg-black text-base ">
           <div className="overflow-auto p-10  bg-opacity-0 bg-black text-white rounded-lg max-h-1/4">
             <Aboutme />
           </div>
