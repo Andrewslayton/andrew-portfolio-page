@@ -48,7 +48,7 @@ export const Base: React.FC = ({ }) => {
     interactivity: {
       events: {
         onHover: {
-          enable: true,
+          enable: false,
           mode: "bubble",
         },
       },

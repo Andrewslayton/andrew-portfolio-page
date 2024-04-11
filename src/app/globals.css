@@ -7,7 +7,13 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+html,body {
+  font-family: 'Inter', sans-serif;
+}
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

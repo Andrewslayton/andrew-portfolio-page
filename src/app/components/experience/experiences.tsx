@@ -1,9 +1,6 @@
 export function Experience() {
   return (
     <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full text-white">
-      <h1 className="text-lg sm:text-xl font-bold p-3 text-center">
-        Software Development
-      </h1>
       <div className="space-y-4">
         <div className="bg-black rounded-lg shadow-lg p-4">
           <h2 className="text-xl sm:text-2xl font-bold">Compose</h2>

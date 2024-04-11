@@ -81,7 +81,7 @@ export function Projects() {
         ))}
       </div>
       <h2 className="text-lg sm:text-l font-bold mt-6 mb-2 text-center">
-        What Im currently Working On
+        Most Recent GitHub Activity
       </h2>
       <div className="space-y-4">
         {projects.map((project, index) => (

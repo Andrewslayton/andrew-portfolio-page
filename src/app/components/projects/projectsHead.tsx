@@ -47,7 +47,7 @@ export const ProjectsHeader: React.FC = ({ }) => {
     interactivity: {
       events: {
         onHover: {
-          enable: true,
+          enable: false,
           mode: "bubble",
         },
       },
@@ -64,9 +64,9 @@ export const ProjectsHeader: React.FC = ({ }) => {
 
     particles: {
       color: {
-        value: "#ff0000",
+        value: "#f9fafa",
         animation: {
-          enable: true,
+          enable: false,
           speed: 2,
           sync: true,
         },
@@ -75,18 +75,18 @@ export const ProjectsHeader: React.FC = ({ }) => {
         blink: false,
         color: "random",
         consent: false,
-        distance: 30,
+        distance: 0,
         enable: true,
         opacity: 0.3,
-        width: 0.5,
+        width: 1,
       },
       move: {
         enable: true,
         outModes: "bounce" as const,
-        speed: { min: 0.5, max: 1 },
+        speed: 0.0,
       },
       number: {
-        value: 100,
+        value: 400,
       },
       opacity: {
         animation: {
@@ -107,7 +107,7 @@ export const ProjectsHeader: React.FC = ({ }) => {
           sync: false,
         },
         random: true,
-        value: { min: 0.1, max: 1 },
+        value: 1,
       },
     },
     polygon: {
@@ -116,11 +116,11 @@ export const ProjectsHeader: React.FC = ({ }) => {
         stroke: {
           color: "#fff",
           width: 0.4,
-          opacity: 0.3,
+          opacity: 0.5,
         },
       },
       move: {
-        radius: 10,
+        radius: 3,
       },
       inline: {
         arrangement: "equidistant",
