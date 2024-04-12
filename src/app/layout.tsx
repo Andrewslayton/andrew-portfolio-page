@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <head>
-        <link rel="icon" type="image/x-icon" href="./favicon.png"></link>
+        <link rel="icon" type="image/x-icon" href="/favicon.png"></link>
       </head>
       <body className={`${inter.className} relative`}>
         <div className="fixed top-0 left-0 w-full bg-black text-white flex justify-between items-center p-4 z-50">
