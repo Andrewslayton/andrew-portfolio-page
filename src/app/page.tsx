@@ -6,6 +6,7 @@ import {Education} from "./components/education/education";
 import {Experience} from "./components/experience/experiences";
 import {Projects} from "./components/projects/projects";
 import { CSSTransition } from "react-transition-group";
+import {Quickbar} from "./components/quickbar/quickbar";
 import {ProjectsHeader} from "./components/projects/projectsHead";
 import {ExperienceHeader} from "./components/experience/experienceHead";
 import {Base} from "./components/background/base";
@@ -23,7 +24,7 @@ const HomePage = () => {
           onClick={() => setIsExpanded(true)}
           className="z-10 absolute p-6 bg-black text-white rounded-full focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-out"
         >
-          Learn More
+          Learn more
         </button>
       )}
       {!isExpanded && (
@@ -33,21 +34,22 @@ const HomePage = () => {
           </div>
         </div>
       )}
-    
+
       {isExpanded && (
         <div className="w- 4/5 sm:w-1/2 relative h-full text-base ">
+          <Quickbar />
           <div className="overflow-auto p-10  bg-opacity-0 text-white rounded-lg max-h-1/4">
             <Aboutme />
           </div>
-          <div className="overflow-auto p-10 sm:p-10 bg-opacity-90  text-white rounded-lg max-h-1/4">
+          <div id="experience" className="overflow-auto p-10 sm:p-10 bg-opacity-90  text-white rounded-lg max-h-1/4 ">
             <ExperienceHeader />
             <Experience />
           </div>
-          <div className="overflow-auto p-10  text-white rounded-lg max-h-1/4">
+          <div id = "education" className="overflow-auto p-10  text-white rounded-lg max-h-1/4">
             <EducationHeader />
             <Education />
           </div>
-          <div className="overflow-auto p-10  text-white rounded-lg max-h-1/4">
+          <div id = "projects" className="overflow-auto p-10  text-white rounded-lg max-h-1/4">
             <ProjectsHeader />
             <Projects />
           </div>

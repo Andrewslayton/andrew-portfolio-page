@@ -26,7 +26,7 @@ export function Aboutme() {
          live in the mountains of Colorado in the future. Sources say hes a big
          lifter and prioritizes his health.
        </p>
-       <div className="flex mt-2 grid-cols-1 sm:grid-cols-3 gap-10 justify-center bg-black rounded-lg p-5">
+       <div className="flex flex-col sm:flex-row mt-2 sm:grid-cols-3 gap-10 justify-center bg-black rounded-lg p-5">
          <Image
            src="/snowboard.png"
            width={200}

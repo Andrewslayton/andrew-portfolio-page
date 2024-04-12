@@ -15,9 +15,11 @@ export const EducationHeader: React.FC = ({}) => {
     let isCancelled = false;
     const updateScale = () => {
       const screenWidth = window.innerWidth;
-      if (screenWidth < 768) {
+      if (screenWidth < 800) {
         setScale(1);
-      } else  {
+      } else if (screenWidth < 1400 && screenWidth > 800) {
+        setScale(2);
+      } else {
         setScale(3);
       }
     };

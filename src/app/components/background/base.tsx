@@ -87,7 +87,7 @@ export const Base: React.FC = ({ }) => {
         speed: 0.05,
       },
       number: {
-        value: 600,
+        value: 400,
       },
       opacity: {
         animation: {
@@ -108,7 +108,7 @@ export const Base: React.FC = ({ }) => {
           sync: false,
         },
         random: true,
-        value: { min: 0.1, max: 1 },
+        value: { min: 0.1, max: 2 },
       },
     },
     polygon: {
@@ -121,7 +121,7 @@ export const Base: React.FC = ({ }) => {
         },
       },
       move: {
-        radius: 3,
+        radius: 1,
       },
       inline: {
         arrangement: "equidistant",
