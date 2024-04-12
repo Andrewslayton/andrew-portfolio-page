@@ -10,6 +10,7 @@ import { initParticlesEngine } from "@tsparticles/react";
 export const Base: React.FC = ({ }) => {
    const [init, setInit] = useState(false);
    const [scale, setScale] = useState(3);
+   const [linkT, setLink] = useState(15);
  
    useEffect(() => {
      let isCancelled = false;
@@ -17,6 +18,7 @@ export const Base: React.FC = ({ }) => {
         const screenWidth = window.innerWidth;
         if (screenWidth < 1500) {
           setScale(1);
+          setLink(7);
         } else {
           setScale(2);
         }
@@ -65,20 +67,18 @@ export const Base: React.FC = ({ }) => {
 
     particles: {
       color: {
-        value: "#ff0000",
+        value: "#1f8278",
         animation: {
-          enable: true,
-          speed: 2,
-          sync: true,
+          enable: false,
         },
       },
       links: {
         blink: false,
-        color: "#ff0000",
+        color: "#1f8278",
         consent: false,
-        distance: 15,
+        distance: linkT,
         enable: true,
-        opacity: 0.5,
+        opacity: 4,
         width: 0.5,
       },
       move: {
@@ -115,9 +115,9 @@ export const Base: React.FC = ({ }) => {
       draw: {
         enable: true,
         stroke: {
-          color: "#fff",
+          color: "#1f8278",
           width: 0.1,
-          opacity: 0.3,
+          opacity: 0.4,
         },
       },
       move: {
@@ -126,7 +126,7 @@ export const Base: React.FC = ({ }) => {
       inline: {
         arrangement: "equidistant",
       },
-      scale: scale ,
+      scale: scale,
       type: "inline",
       url: "/test.svg",
     },
