@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 type GitHubProject = {
   html_url: string;
   name: string;
-  description: string | null;
+  pushed_at: string | null;
 };
 
 const staticProjects = [
@@ -47,7 +47,7 @@ export function Projects() {
     const fetchProjects = async () => {
       try {
         const response = await fetch(
-          "https://api.github.com/users/Andrewslayton/repos?sort=created&per_page=3"
+          "https://api.github.com/users/Andrewslayton/repos?sort=pushed&per_page=3"
         );
         if (!response.ok) {
           throw new Error("womp womp");
@@ -62,7 +62,13 @@ export function Projects() {
 
     fetchProjects();
   }, []);
-
+ const formatDate = (dateString: string | null) => {
+   if (!dateString) return "No recent commits";
+  console.log(dateString);
+   const date = new Date(dateString);
+   console.log(date)
+   return date.toLocaleDateString(); 
+ };
   return (
     <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full ">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 auto-rows-min mt-6">
@@ -92,6 +98,9 @@ export function Projects() {
             >
               {project.name}
             </a>
+            <p className="text-sm text-white mt-2">
+              Last Change: {formatDate(project.pushed_at)}
+            </p>
           </div>
         ))}
       </div>
