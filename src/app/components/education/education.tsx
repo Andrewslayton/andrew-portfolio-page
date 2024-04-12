@@ -41,7 +41,7 @@ export function Education() {
   ];
 
   return (
-    <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full text-white ">
+    <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full text-white id=education ">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {courses.map((course, index) => (
           <div key={index} className="bg-black rounded-lg shadow-lg p-4">

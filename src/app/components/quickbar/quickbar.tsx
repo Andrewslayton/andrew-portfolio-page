@@ -12,7 +12,7 @@ export const Quickbar: React.FC = ({ }) => {
           Experience
         </a>
         <a
-          href="education"
+          href="#education"
           className="bg-black text-white p-2 rounded-lg hover:outline-dotted"
         >
           Education
