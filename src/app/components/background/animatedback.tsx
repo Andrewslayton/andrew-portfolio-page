@@ -13,14 +13,12 @@ interface HyperspaceBackgroundProps {
 
 export const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
   isVisible,
-  speed = 1,
 }) => {
 
   useEffect(() => {
     let isCancelled = false;
     initParticlesEngine(async (engine: Engine) => {
       await loadTrianglesPreset(engine);
-     
     });
     return () => {
       isCancelled = true;
@@ -33,7 +31,7 @@ export const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
 
   const options = {
     preset: "triangles",
-    fpsLimit: 60,
+    fpsLimit: 15,
     background: {
       color: "#000000",
     },
@@ -42,7 +40,7 @@ export const HyperspaceBackground: React.FC<HyperspaceBackgroundProps> = ({
     },
     particles: {
       move: {
-        speed: speed,
+        speed: 1,
       },
     },
   };

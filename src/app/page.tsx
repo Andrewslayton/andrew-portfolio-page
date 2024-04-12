@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, } from "react";
 import {HyperspaceBackground} from "./components/background/animatedback";
 import {Aboutme} from "./components/about/aboutme";
 import {Education} from "./components/education/education";
 import {Experience} from "./components/experience/experiences";
 import {Projects} from "./components/projects/projects";
+import { CSSTransition } from "react-transition-group";
 import {ProjectsHeader} from "./components/projects/projectsHead";
 import {ExperienceHeader} from "./components/experience/experienceHead";
 import {Base} from "./components/background/base";
@@ -12,10 +13,11 @@ import { EducationHeader } from "./components/education/educationHead";
 
 const HomePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  
+   const containerClass = isExpanded
+     ? "flex flex-col items-center justify-center bg-black font-mono text-lg"
+     : "flex items-center justify-center h-screen bg-black font-mono text-lg";
   return (
-    <div className="flex items-center justify-center h-screen bg-black font-mono text-lg ">
-      <HyperspaceBackground isVisible={isExpanded} />
+    <div className={containerClass}>
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
@@ -31,21 +33,21 @@ const HomePage = () => {
           </div>
         </div>
       )}
-
+    
       {isExpanded && (
-        <div className="w- 4/5 sm:w-1/2 relative h-screen bg-black text-base ">
-          <div className="overflow-auto p-10  bg-opacity-0 bg-black text-white rounded-lg max-h-1/4">
+        <div className="w- 4/5 sm:w-1/2 relative h-full text-base ">
+          <div className="overflow-auto p-10  bg-opacity-0 text-white rounded-lg max-h-1/4">
             <Aboutme />
           </div>
-          <div className="overflow-auto p-10 sm:p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
+          <div className="overflow-auto p-10 sm:p-10 bg-opacity-90  text-white rounded-lg max-h-1/4">
             <ExperienceHeader />
             <Experience />
           </div>
-          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
+          <div className="overflow-auto p-10  text-white rounded-lg max-h-1/4">
             <EducationHeader />
             <Education />
           </div>
-          <div className="overflow-auto p-10 bg-opacity-90 bg-black text-white rounded-lg max-h-1/4">
+          <div className="overflow-auto p-10  text-white rounded-lg max-h-1/4">
             <ProjectsHeader />
             <Projects />
           </div>
