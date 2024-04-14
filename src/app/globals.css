@@ -37,3 +37,10 @@ body {
     text-wrap: balance;
   }
 }
+
+.svg-container {
+  background: url('/bitmap.svg') no-repeat center center;
+  background-size: contain;
+  padding: 10px;
+  display: inline-flex;
+}

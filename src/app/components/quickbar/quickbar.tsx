@@ -3,8 +3,9 @@ import Link from 'next/link'
 
 export const Quickbar: React.FC = ({ }) => {
   return (
-    <div className=" h-2/10 flex justify-center items-center p-3 w-full">
-      <div className="grid grid-cols-4 gap-4 text-sm">
+
+    <div className=" h-1/10 flex justify-center items-center p-6 w-full sm:bg-none bg-black sm:p-4">
+      <div className="grid grid-cols-4 gap-4 text-sm ">
         <Link
           href="#experience"
           className="bg-black text-white p-2 rounded-lg hover:outline-dotted "

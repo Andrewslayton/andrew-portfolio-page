@@ -118,7 +118,7 @@ export const ProjectsHeader: React.FC = ({ }) => {
         stroke: {
           color: "#fff",
           width: 0.4,
-          opacity: 0.5,
+          opacity: 0.8,
         },
       },
       move: {

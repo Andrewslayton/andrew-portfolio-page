@@ -11,6 +11,9 @@ const config: Config = {
       fontFamily: {
         sans: ["font-sans", "sans-serif"],
       },
+      backgroundImage: {
+        polygon: "url('/bitmap.svg')",
+      },
     },
   },
   plugins: [],

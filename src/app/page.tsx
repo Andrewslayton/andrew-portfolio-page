@@ -10,21 +10,24 @@ import {Quickbar} from "./components/quickbar/quickbar";
 import {ProjectsHeader} from "./components/projects/projectsHead";
 import {ExperienceHeader} from "./components/experience/experienceHead";
 import {Base} from "./components/background/base";
+import Image from 'next/image';
 import { EducationHeader } from "./components/education/educationHead";
 
 const HomePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-   const containerClass = isExpanded
-     ? "flex flex-col items-center justify-center bg-black font-mono text-lg"
-     : "flex items-center justify-center h-screen bg-black font-mono text-lg";
+  const [isPower, setIsPower] = useState(false);
+  const containerClass = isExpanded
+    ? "flex flex-col items-center justify-center bg-black font-mono text-lg"
+    : "flex items-center justify-center h-screen bg-black font-mono text-lg";
   return (
     <div className={containerClass}>
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
-          className="z-10 absolute p-6 bg-black text-white rounded-full focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-out"
+          className="z-10 absolute p-6 text-white rounded-full focus:outline-none focus:ring-4 focus:ring-blue-300 hover:ring-1 hover:ring-[#1f8278] transition-all duration-300 ease-out"
         >
           Learn more
+          <br></br>
         </button>
       )}
       {!isExpanded && (
@@ -37,19 +40,30 @@ const HomePage = () => {
 
       {isExpanded && (
         <div className="w- 4/5 sm:w-1/2 relative h-full text-base ">
-          <Quickbar />
+          <div className="sm:sticky top-0 z-50 ">
+            <Quickbar />
+          </div>
           <div className="overflow-auto p-10  bg-opacity-0 text-white rounded-lg max-h-1/4">
             <Aboutme />
           </div>
-          <div id="experience" className="overflow-auto p-10 sm:p-10 bg-opacity-90  text-white rounded-lg max-h-1/4 ">
+          <div
+            id="experience"
+            className="overflow-auto p-10 sm:p-10 bg-opacity-90  text-white rounded-lg max-h-1/4 "
+          >
             <ExperienceHeader />
             <Experience />
           </div>
-          <div id = "education" className="overflow-auto p-10  text-white rounded-lg max-h-1/4">
+          <div
+            id="education"
+            className="overflow-auto p-10  text-white rounded-lg max-h-1/4"
+          >
             <EducationHeader />
             <Education />
           </div>
-          <div id = "projects" className="overflow-auto p-10  text-white rounded-lg max-h-1/4">
+          <div
+            id="projects"
+            className="overflow-auto p-10  text-white rounded-lg max-h-1/4"
+          >
             <ProjectsHeader />
             <Projects />
           </div>
