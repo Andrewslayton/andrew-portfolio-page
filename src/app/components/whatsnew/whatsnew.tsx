@@ -18,7 +18,7 @@ export function WhatsNew() {
     const fetchProjects = async () => {
       try {
         const response = await fetch(
-          "https://api.github.com/users/Andrewslayton/repos?sort=pushed&per_page=100"
+          "https://api.github.com/users/Andrewslayton/repos?sort=pushed&per_page=50"
         );
         if (!response.ok) {
           throw new Error("Error fetching projects");
