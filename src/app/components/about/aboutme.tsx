@@ -2,9 +2,8 @@ import Image from "next/image";
 export function Aboutme() {
    return (
      <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full  ">
-       <h1 className="text-lg sm:text-xl font-bold  p-3 text-center ">
-         Who Is Andrew Slayton
-       </h1>
+       <h2 className="text-lg sm:text-xl font-bold text-white mb-4">
+       </h2>
        <div className="bg-black p-4 rounded-lg">
          <p className="text-sm sm:text-base ">
            Andrew Slayton is an adventurist and an up and coming software
@@ -17,7 +16,6 @@ export function Aboutme() {
          </p>
        </div>
        <h1 className="text-lg sm:text-l font-bold  mb-2 mt-2 text-center">
-         Hobbies
        </h1>
        <p className="  text-sm sm:text-base bg-black p-4 rounded-lg">
          As previously stated Andrew loves to adventure. He has been across the

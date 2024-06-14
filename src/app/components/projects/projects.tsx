@@ -41,36 +41,9 @@ const staticProjects = [
 ];
 
 export function Projects() {
-  const [projects, setProjects] = useState<GitHubProject[]>([] as GitHubProject[]);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch(
-          "https://api.github.com/users/Andrewslayton/repos?sort=pushed&per_page=3"
-        );
-        if (!response.ok) {
-          throw new Error("womp womp");
-        }
-        const data: GitHubProject[] = await response.json();
-        console.log(data);
-        setProjects(data);
-      } catch (error) {
-        
-      }
-    };
-
-    fetchProjects();
-  }, []);
- const formatDate = (dateString: string | null) => {
-   if (!dateString) return "No recent commits";
-  console.log(dateString);
-   const date = new Date(dateString);
-   console.log(date)
-   return date.toLocaleDateString(); 
- };
   return (
-    <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full ">
+    <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full">
+      <h2 className="text-lg sm:text-xl font-bold text-white mb-4">Projects</h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 auto-rows-min mt-6">
         {staticProjects.map((project, index) => (
           <div key={index} className="space-y-4">
@@ -83,24 +56,6 @@ export function Projects() {
               </a>
               <p className="text-sm text-white mt-2">{project.description}</p>
             </div>
-          </div>
-        ))}
-      </div>
-      <h2 className="text-lg sm:text-l font-bold mt-6 mb-2 text-center">
-        Most Recent GitHub Activity
-      </h2>
-      <div className="space-y-4">
-        {projects.map((project, index) => (
-          <div key={index} className="bg-black rounded-lg shadow-lg p-4">
-            <a
-              href={project.html_url}
-              className="text-xl font-bold text-white hover:text-gray-300"
-            >
-              {project.name}
-            </a>
-            <p className="text-sm text-white mt-2">
-              Last Change: {formatDate(project.pushed_at)}
-            </p>
           </div>
         ))}
       </div>
