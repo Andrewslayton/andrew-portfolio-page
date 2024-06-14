@@ -91,7 +91,7 @@ export function WhatsNew() {
   return (
     <div className="p-4 rounded-lg overflow-hidden h-full bg-[#1f8278] relative">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg sm:text-xl font-bold text-white">What's new on Github</h2>
+        <h2 className="text-lg sm:text-xl font-bold text-white">What&apos;s new on Github</h2>
         <div className="flex space-x-2">
           <button
             className={`p-1 rounded-full ${
