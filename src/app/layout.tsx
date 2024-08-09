@@ -16,17 +16,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <title>Andrew Portfolio</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="Andrew Portfolio" />
-        <meta
-          property="og:description"
-          content="Andrew Slayton Personal Website!"
-        />
-        <meta property="og:image" content="/meta.png" />
-        <meta property="og:url" content="https://andrewslayton.dev" />
+        <title>Andrew Slayton Personal Website</title>
+        <meta name="title" content="Andrew Slayton's Personal Website" />
+        <meta name="description" content="" />
         <meta property="og:type" content="website" />
-        <link rel="icon" type="image/x-icon" href="/favicon.png" />
+        <meta property="og:url" content="https://andrewslayton.dev/" />
+        <meta property="og:title" content="Andrew Slayton's Personal Website" />
+        <meta property="og:description" content="" />
+        <meta
+          property="og:image"
+          content="/meta.png"
+        />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://andrewslayton.dev/" />
+        <meta
+          property="twitter:title"
+          content="Andrew Slayton's Personal Website"
+        />
+        <meta property="twitter:description" content="" />
+        <meta
+          property="twitter:image"
+          content="/meta.png"
+        />
       </Head>
       <body className={`${inter.className} relative`}>
         <div className="fixed top-0 left-0 w-full bg-black text-white flex justify-between items-center p-4 z-50">

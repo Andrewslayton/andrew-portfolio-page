@@ -45,6 +45,7 @@ const HomePage = () => {
   };
 
   return (
+    
     <div className="flex flex-col min-h-screen bg-black font-mono text-lg">
       <div className="relative">
         <CubeCanvas onClickFace={handleCubeClick} />
