@@ -5,15 +5,16 @@ import ClientComponent from "./clientComponent";
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://andrewslayton.dev"), // Add this line
   title: "Andrew Slayton's Personal Website",
   description:
-    "Explore Andrew Slayton's personal portfolio with interactive 3D elements.",
+    "Explore Andrew Slayton's personal portfolio with interactive 3d routing.",
   openGraph: {
     type: "website",
     url: "https://andrewslayton.dev/",
     title: "Andrew Slayton's Personal Website",
     description:
-      "Explore Andrew Slayton's personal portfolio with interactive 3D elements.",
+      "Explore Andrew Slayton's personal portfolio with interactive 3d routing.",
     images: [
       {
         url: "/meta.png",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Andrew Slayton's Personal Website",
     description:
-      "Explore Andrew Slayton's personal portfolio with interactive 3D elements.",
+      "Explore Andrew Slayton's personal portfolio with interactive 3d routing.",
     images: [
       {
         url: "/meta.png",
