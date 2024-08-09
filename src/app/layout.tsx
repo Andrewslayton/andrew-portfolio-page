@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +15,17 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <head>
-        <link rel="icon" type="image/x-icon" href="/favicon.png"></link>
+        <meta property="og:title" content="Andrew Portfolio" />
+        <meta
+          property="og:description"
+          content="Andrew Slayton Personal Website!"
+        />
+        <meta
+          property="og:image"
+          content="/meta.png"
+        />
+        <meta property="og:url" content="https://andrewslayton.dev" />
       </head>
       <body className={`${inter.className} relative`}>
         <div className="fixed top-0 left-0 w-full bg-black text-white flex justify-between items-center p-4 z-50">
