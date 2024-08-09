@@ -35,17 +35,23 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
     const materials = labels.map((label) => {
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
-      canvas.width = 512; // Increased texture size for larger cube
+      canvas.width = 512;
       canvas.height = 512;
-      context!.fillStyle = "#FFF";
-      context!.font = "48px Arial"; // Increased font size
+      context!.fillStyle = "#1f8278"; 
+      context!.fillRect(0, 0, canvas.width, canvas.height);
+      context!.font = "48px Arial";
       context!.textAlign = "center";
-      context!.fillText(label, 256, 256); // Centered text in larger texture
+      context!.fillStyle = "#000000"; 
+      context!.fillText(label, 256, 256);
 
       const texture = new THREE.Texture(canvas);
       texture.needsUpdate = true;
 
-      return new THREE.MeshBasicMaterial({ map: texture });
+      const material = new THREE.MeshBasicMaterial({
+        map: texture,
+        transparent: true,
+      });
+      return material;
     });
 
     if (meshRef.current) {
@@ -95,10 +101,9 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
   });
 
   return (
-    <mesh ref={meshRef} scale={[2.5, 2.5, 2.5]}>
-      {" "}
-      {/* Increased size of the cube */}
+    <mesh ref={meshRef} scale={[3, 3, 3]}>
       <boxGeometry args={[1, 1, 1]} />
+      <meshBasicMaterial color="#1f8278" /> {/* Set the cube color here */}
     </mesh>
   );
 };
@@ -106,14 +111,13 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
 const CubeCanvas: React.FC<CubeProps> = ({ onClickFace }) => (
   <div
     style={{
-      position: "absolute",
-      bottom: 0,
-      left: 0,
+      position: "relative",
       width: "100%",
-      height: "30vh", 
+      height: "40vh",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      backgroundColor: "black",
     }}
   >
     <Canvas style={{ width: "100%", height: "100%" }}>

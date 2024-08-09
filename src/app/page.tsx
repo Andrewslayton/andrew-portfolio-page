@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState } from "react";
 import { Aboutme } from "./components/about/aboutme";
 import { Education } from "./components/education/education";
@@ -44,8 +44,10 @@ const HomePage = () => {
   };
 
   return (
-    <div className="flex h-screen bg-black font-mono text-lg">
-      <CubeCanvas onClickFace={handleCubeClick} />
+    <div className="flex flex-col min-h-screen bg-black font-mono text-lg">
+      <div className="relative">
+        <CubeCanvas onClickFace={handleCubeClick} />
+      </div>
       <div className="flex-1 flex items-center justify-center">
         {renderSection()}
       </div>
