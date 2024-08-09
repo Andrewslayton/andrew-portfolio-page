@@ -1,12 +1,15 @@
-
-"use client"
+"use client";
 import React, { useState } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
@@ -21,13 +24,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <button
               className="px-4 py-2 bg-[#1f8278] rounded hover:bg-opacity-40 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              onMouseEnter = {() => setIsDropdownOpen(true)}
+              onMouseEnter={() => setIsDropdownOpen(true)}
             >
               Contacts
             </button>
             {isDropdownOpen && (
-              <div onMouseLeave ={() => setIsDropdownOpen(false)} className="absolute left-0 mt-2 w-90 bg-white text-black rounded shadow-lg py-2">
-                
+              <div
+                onMouseLeave={() => setIsDropdownOpen(false)}
+                className="absolute left-0 mt-2 w-90 bg-white text-black rounded shadow-lg py-2"
+              >
                 <p className="px-4 py-2 border-b">
                   Email: andrewslaywork@gmail.com
                 </p>
