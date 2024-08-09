@@ -26,16 +26,16 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
 
   useEffect(() => {
     const initialLabels = [
-      "", // Blank initially for other faces
+      "", 
       "",
       "",
       "",
-      "Rotate Me", // First face initially says "Rotate Me"
+      "Rotate and click ", 
       "",
     ];
 
     const spunLabels = [
-      "Blog", // Change to "Blog" after spun
+      "Blog", 
       "Education",
       "Experience",
       "Projects",
@@ -50,11 +50,11 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
       const context = canvas.getContext("2d");
       canvas.width = 512;
       canvas.height = 512;
-      context!.fillStyle = "#FFFFFF"; // White background
+      context!.fillStyle = "#1f8278"; 
       context!.fillRect(0, 0, canvas.width, canvas.height);
-      context!.font = "48px Arial";
+      context!.font = "48px times new roman";
       context!.textAlign = "center";
-      context!.fillStyle = "#000000"; // Black text color
+      context!.fillStyle = "white"; 
       context!.fillText(label, 256, 256);
 
       const texture = new THREE.Texture(canvas);
@@ -83,7 +83,7 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
 
   const handlePointerUp = useCallback(() => {
     if (isDragging) {
-      setHasSpun(true); // Set the state to true if the cube has been spun
+      setHasSpun(true); 
     }
   }, [isDragging]);
 
@@ -95,7 +95,7 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
       if (intersects.length > 0) {
         const intersectedFaceIndex = intersects[0].face!.materialIndex;
         const sections: Section[] = [
-          "blog", // Change to "blog" after spin
+          "blog", 
           "education",
           "experience",
           "projects",
@@ -124,7 +124,6 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
   return (
     <mesh ref={meshRef} scale={[3, 3, 3]}>
       <boxGeometry args={[1, 1, 1]} />
-      {/* The rest of the faces are rendered based on the materials */}
     </mesh>
   );
 };

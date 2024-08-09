@@ -4,10 +4,9 @@ export function Aboutme() {
   return (
     <div className="flex justify-center items-center h-auto pb-20">
       {" "}
-      {/* Added padding-bottom */}
-      <div className="bg-[#1f8278] p-6 rounded-lg w-full max-w-2xl">
-        <h2 className="text-lg sm:text-xl font-bold text-white mb-4 text-center">
-          About Me
+      <div className="bg-[#1f8278] p-4 rounded-lg w-full max-w-4xl">
+        <h2 className="text-lg sm:text-xl font-bold text-white mb-4">
+          About Andrew
         </h2>
         <div className="bg-black p-4 rounded-lg mb-4">
           <p className="text-sm sm:text-base text-white">
@@ -25,9 +24,10 @@ export function Aboutme() {
           the United States, including hiking in Arizona, snowboarding in
           Colorado, and climbing in the Badlands. He plans to backpack across
           Europe and live in the mountains of Colorado in the future. Sources
-          say he's a big lifter and prioritizes his health.
+          say he is a big lifter and prioritizes his health.
         </p>
-        <div className="flex justify-center bg-black p-4 rounded-lg mb-4">
+        <div className="flex justify-center rounded-lg mb-4">
+          <div className =" bg-black p-4 rounded-lg ">
           <Image
             src="/andrewcave.png"
             width={300}
@@ -36,9 +36,10 @@ export function Aboutme() {
             className="object-cover rounded-lg"
           />
         </div>
+        </div>
         <p className="text-center text-white text-sm sm:text-base mt-4">
           View more images on the{" "}
-          <a href="/blog" className="underline">
+          <a className="underline">
             blog page
           </a>
           .

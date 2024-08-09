@@ -1,7 +1,9 @@
 export function Experience() {
   return (
-    <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full text-white id=experience">
-      <h2 className="text-lg sm:text-xl font-bold text-white mb-4">Experience</h2>
+    <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full w-4xl text-white pb-20 id=experience">
+      <h2 className="text-lg sm:text-xl font-bold text-white mb-4">
+        Experience
+      </h2>
       <div className="space-y-4">
         <div className="bg-black rounded-lg shadow-lg p-4">
           <h2 className="text-xl sm:text-2xl font-bold">Compose</h2>
@@ -9,11 +11,14 @@ export function Experience() {
             Software Developer / Jan 2024 - Current
           </p>
           <p className="text-sm sm:text-base mt-2">
-            Wrote and debugged software in a mixture of Next.js, React, and
-            Angular. Worked within a remote ecosystem where communication was of
-            upmost importance to push changes fast to appease clients.
-            Implemented safety features to ensure the companies website would
-            not be at risk of botted attacks.
+            -Developed web applications for clients using React, NextJs, and
+            Angular.
+            <br />
+            -Created a supply item shop to manage inventory and pricing in our
+            SQL database.
+            <br />
+            -Worked in .NET to create effiecient endpoints for our clients
+            applications.
           </p>
         </div>
         <div className="bg-black rounded-lg shadow-lg p-4">

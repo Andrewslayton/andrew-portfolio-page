@@ -6,7 +6,8 @@ import { Experience } from "./components/experience/experiences";
 import CubeCanvas from "./components/cube/cube";
 import { Projects } from "./components/projects/projects";
 import { WhatsNew } from "./components/whatsnew/whatsnew";
-// import { Blog } from "./components/blog/blog"; // Assume this is the component for the Blog section
+import { Blog } from "./components/blog/blog";
+
 
 type Section =
   | "about"
@@ -37,7 +38,7 @@ const HomePage = () => {
       case "whats-new":
         return <WhatsNew />;
       case "blog":
-      // return <Blog />;
+        return <Blog />;
       default:
         return null;
     }

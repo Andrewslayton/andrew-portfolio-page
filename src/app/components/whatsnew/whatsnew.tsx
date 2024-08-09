@@ -89,7 +89,7 @@ export function WhatsNew() {
   };
 
  return (
-   <div className="p-4 rounded-lg overflow-hidden h-auto bg-[#1f8278] relative">
+   <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full max-w-4xl">
      <div className="flex justify-between items-center mb-4">
        <h2 className="text-lg sm:text-xl font-bold text-white">
          What&apos;s new on Github
