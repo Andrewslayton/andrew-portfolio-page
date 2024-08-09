@@ -24,24 +24,12 @@ export function Aboutme() {
          live in the mountains of Colorado in the future. Sources say hes a big
          lifter and prioritizes his health.
        </p>
-       <div className="flex flex-col sm:flex-row mt-2 sm:grid-cols-3 gap-10 justify-center bg-black rounded-lg p-5">
-         <Image
-           src="/snowboard.png"
-           width={200}
-           height={200}
-           alt="Andrew Slayton snowboarding"
-         />
+       <div className="flex  justify-center bg-black rounded-lg p-5">
          <Image
            src="/andrewcave.png"
            width={300}
            height={150}
            alt="Andrew Slayton in a cave"
-         />
-         <Image
-           src="/dogchess.png"
-           width={200}
-           height={200}
-           alt="Andrew Slayton versus his toughest opponent in chess, Benji."
          />
        </div>
      </div>
