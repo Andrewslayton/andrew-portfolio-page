@@ -3,6 +3,41 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Andrew Slayton's Personal Website",
+  description:
+    "Explore Andrew Slayton's personal portfolio with interactive 3D elements.",
+  openGraph: {
+    type: "website",
+    url: "https://andrewslayton.dev/",
+    title: "Andrew Slayton's Personal Website",
+    description:
+      "Explore Andrew Slayton's personal portfolio with interactive 3D elements.",
+    images: [
+      {
+        url: "/meta.png",
+        width: 800,
+        height: 600,
+        alt: "Andrew Slayton Portfolio Image",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Andrew Slayton's Personal Website",
+    description:
+      "Explore Andrew Slayton's personal portfolio with interactive 3D elements.",
+    images: [
+      {
+        url: "/meta.png",
+        alt: "Andrew Slayton Portfolio Image",
+      },
+    ],
+  },
+};
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,30 +50,6 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <Head>
-        <title>Andrew Slayton Personal Website</title>
-        <meta name="title" content="Andrew Slayton's Personal Website" />
-        <meta name="description" content="" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://andrewslayton.dev/" />
-        <meta property="og:title" content="Andrew Slayton's Personal Website" />
-        <meta property="og:description" content="" />
-        <meta
-          property="og:image"
-          content="/meta.png"
-        />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://andrewslayton.dev/" />
-        <meta
-          property="twitter:title"
-          content="Andrew Slayton's Personal Website"
-        />
-        <meta property="twitter:description" content="" />
-        <meta
-          property="twitter:image"
-          content="/meta.png"
-        />
-      </Head>
       <body className={`${inter.className} relative`}>
         <div className="fixed top-0 left-0 w-full bg-black text-white flex justify-between items-center p-4 z-50">
           <div className="relative">
