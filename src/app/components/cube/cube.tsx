@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { OrbitControls } from "@react-three/drei";
 
@@ -22,42 +22,54 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
   const [isDragging, setIsDragging] = useState(false);
+  const [hasSpun, setHasSpun] = useState(false);
 
   useEffect(() => {
-    const labels = [
-      "About",
+    const initialLabels = [
+      "", // Blank initially for other faces
+      "",
+      "",
+      "",
+      "Rotate Me", // First face initially says "Rotate Me"
+      "",
+    ];
+
+    const spunLabels = [
+      "Blog", // Change to "Blog" after spun
       "Education",
       "Experience",
       "Projects",
       "What's New",
-      "Blog",
+      "About",
     ];
+
+    const labels = hasSpun ? spunLabels : initialLabels;
+
     const materials = labels.map((label) => {
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
       canvas.width = 512;
       canvas.height = 512;
-      context!.fillStyle = "#1f8278"; 
+      context!.fillStyle = "#FFFFFF"; // White background
       context!.fillRect(0, 0, canvas.width, canvas.height);
       context!.font = "48px Arial";
       context!.textAlign = "center";
-      context!.fillStyle = "#000000"; 
+      context!.fillStyle = "#000000"; // Black text color
       context!.fillText(label, 256, 256);
 
       const texture = new THREE.Texture(canvas);
       texture.needsUpdate = true;
 
-      const material = new THREE.MeshBasicMaterial({
+      return new THREE.MeshBasicMaterial({
         map: texture,
         transparent: true,
       });
-      return material;
     });
 
     if (meshRef.current) {
       meshRef.current.material = materials;
     }
-  }, []);
+  }, [hasSpun]);
 
   const handlePointerDown = useCallback(() => {
     setIsDragging(false);
@@ -69,6 +81,12 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
     setIsDragging(true);
   }, []);
 
+  const handlePointerUp = useCallback(() => {
+    if (isDragging) {
+      setHasSpun(true); // Set the state to true if the cube has been spun
+    }
+  }, [isDragging]);
+
   const handleClick = useCallback(() => {
     if (!isDragging && meshRef.current) {
       raycaster.setFromCamera(pointer, camera);
@@ -77,33 +95,36 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
       if (intersects.length > 0) {
         const intersectedFaceIndex = intersects[0].face!.materialIndex;
         const sections: Section[] = [
-          "about",
+          "blog", // Change to "blog" after spin
           "education",
           "experience",
           "projects",
           "whats-new",
-          "blog",
+          "about",
         ];
         onClickFace(sections[intersectedFaceIndex]);
       }
     }
   }, [camera, pointer, raycaster, onClickFace, isDragging]);
 
-  useFrame(() => {
+  useEffect(() => {
     gl.domElement.addEventListener("mousedown", handlePointerDown);
     gl.domElement.addEventListener("mousemove", handlePointerMove);
+    gl.domElement.addEventListener("mouseup", handlePointerUp);
     gl.domElement.addEventListener("click", handleClick);
+
     return () => {
       gl.domElement.removeEventListener("mousedown", handlePointerDown);
       gl.domElement.removeEventListener("mousemove", handlePointerMove);
+      gl.domElement.removeEventListener("mouseup", handlePointerUp);
       gl.domElement.removeEventListener("click", handleClick);
     };
-  });
+  }, [handlePointerDown, handlePointerMove, handlePointerUp, handleClick, gl]);
 
   return (
     <mesh ref={meshRef} scale={[3, 3, 3]}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshBasicMaterial color="#1f8278" /> {/* Set the cube color here */}
+      {/* The rest of the faces are rendered based on the materials */}
     </mesh>
   );
 };
