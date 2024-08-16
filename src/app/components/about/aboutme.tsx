@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Aboutme() {
   return (
-    <div className="flex justify-center items-center h-auto pb-20">
+    <div className="flex justify-center items-center h-auto ">
       {" "}
       <div className="bg-[#1f8278] p-4 rounded-lg w-full max-w-4xl">
         <h2 className="text-lg sm:text-xl font-bold text-white mb-4">
