@@ -25,17 +25,10 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
   const [hasSpun, setHasSpun] = useState(false);
 
   useEffect(() => {
-    const initialLabels = [
-      "", 
-      "",
-      "",
-      "",
-      "Rotate and click ", 
-      "",
-    ];
+    const initialLabels = ["", "", "", "", "Rotate and click ", ""];
 
     const spunLabels = [
-      "Blog", 
+      "Blog",
       "Education",
       "Experience",
       "Projects",
@@ -50,11 +43,11 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
       const context = canvas.getContext("2d");
       canvas.width = 512;
       canvas.height = 512;
-      context!.fillStyle = "#1f8278"; 
+      context!.fillStyle = "#1f8278";
       context!.fillRect(0, 0, canvas.width, canvas.height);
       context!.font = "48px times new roman";
       context!.textAlign = "center";
-      context!.fillStyle = "white"; 
+      context!.fillStyle = "white";
       context!.fillText(label, 256, 256);
 
       const texture = new THREE.Texture(canvas);
@@ -83,7 +76,7 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
 
   const handlePointerUp = useCallback(() => {
     if (isDragging) {
-      setHasSpun(true); 
+      setHasSpun(true);
     }
   }, [isDragging]);
 
@@ -95,7 +88,7 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
       if (intersects.length > 0) {
         const intersectedFaceIndex = intersects[0].face!.materialIndex;
         const sections: Section[] = [
-          "blog", 
+          "blog",
           "education",
           "experience",
           "projects",
@@ -122,7 +115,11 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
   }, [handlePointerDown, handlePointerMove, handlePointerUp, handleClick, gl]);
 
   return (
-    <mesh ref={meshRef} scale={[3, 3, 3]}>
+    <mesh
+      ref={meshRef}
+      scale={[3, 3, 3]}
+      rotation={[Math.PI / 12, Math.PI / 6, 0]}
+    >
       <boxGeometry args={[1, 1, 1]} />
     </mesh>
   );
