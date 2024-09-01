@@ -14,10 +14,9 @@ export function Experience() {
             -Developed web applications for clients using React, NextJs, and
             Angular.
             <br />
-            -Created a supply item shop to manage inventory and pricing in our
-            SQL database.
+            -Created a supply item shop to manage inventory and pricing.
             <br />
-            -Worked in .NET to create effiecient endpoints for our clients
+            -Worked in .NET to create efficient endpoints for our clients
             applications.
           </p>
         </div>
