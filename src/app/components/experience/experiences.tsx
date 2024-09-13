@@ -11,8 +11,8 @@ export function Experience() {
             Software Developer / Jan 2024 - Current
           </p>
           <p className="text-sm sm:text-base mt-2">
-            -Developed web applications for clients using React, NextJs, and
-            Angular.
+            -Developed web applications for clients using React, NextJs, 
+            Angular, and aspnetcore.
             <br />
             -Created a supply item shop to manage inventory and pricing.
             <br />
