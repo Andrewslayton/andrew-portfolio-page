@@ -45,9 +45,9 @@ const Cube: React.FC<CubeProps> = ({ onClickFace }) => {
       canvas.height = 512;
       context!.fillStyle = "#1f8278";
       context!.fillRect(0, 0, canvas.width, canvas.height);
-      context!.font = "48px times new roman";
+      context!.font = "60px times new roman";
       context!.textAlign = "center";
-      context!.fillStyle = "white";
+      context!.fillStyle = "black";
       context!.fillText(label, 256, 256);
 
       const texture = new THREE.Texture(canvas);
