@@ -89,9 +89,9 @@ export function WhatsNew() {
   };
 
  return (
-   <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full max-w-4xl">
+   <div className="bg-[#D7BDE2] p-4 rounded-lg overflow-auto h-full max-w-4xl">
      <div className="flex justify-between items-center mb-4">
-       <h2 className="text-lg sm:text-xl font-bold text-white">
+       <h2 className="text-lg sm:text-xl font-bold text-[#4A235A]">
          What&apos;s new on Github
        </h2>
        <div className="flex space-x-2">
@@ -125,19 +125,19 @@ export function WhatsNew() {
            <a
              key={index}
              href={project.html_url}
-             className="relative bg-black rounded-lg shadow-lg p-4 h-48 group flex items-center justify-center"
+             className="relative  rounded-lg shadow-lg p-4 h-48 group flex items-center justify-center"
              target="_blank"
              rel="noopener noreferrer"
            >
              <div className="text-center">
                <span
-                 className="text-l font-bold text-white group-hover:text-gray-300 break-words"
+                 className="text-l font-bold text-[#4A235A] group-hover:text-transparent break-words"
                  style={{ wordBreak: "break-word", maxWidth: "100%" }}
                >
                  {project.name}
                </span>
              </div>
-             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-90 transition-opacity duration-300 flex flex-col justify-center items-center text-center text-white p-4 opacity-0 group-hover:opacity-100">
+             <div className="absolute inset-0  bg-opacity-0 group-hover:bg-opacity-90 transition-opacity duration-300 flex flex-col justify-center items-center text-center text-[#4A235A] p-4 opacity-0 group-hover:opacity-100">
                <p className="text-sm">
                  {project.commit_message || "No description available."}
                </p>

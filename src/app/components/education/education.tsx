@@ -41,15 +41,17 @@ export function Education() {
   ];
 
   return (
-    <div className="bg-[#1f8278] p-4 rounded-lg overflow-auto h-full max-w-4xl text-white id=education ">
-      <h2 className="text-lg sm:text-xl font-bold text-white mb-4">Classes</h2>
+    <div className="bg-[#D7BDE2] p-4 rounded-lg overflow-auto h-full max-w-4xl text-[#4A235A] id=education ">
+      <h2 className="text-lg sm:text-xl font-bold text-[#4A235A] mb-4">
+        Classes
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {courses.map((course, index) => (
-          <div key={index} className="bg-black rounded-lg shadow-lg p-4">
+          <div key={index} className="bg-[#D7BDE2] rounded-lg shadow-lg p-4">
             <h2 className="text-base sm:text-lg md:text-xl font-bold overflow-auto">
               {course.name}
             </h2>
-            <p className="text-sm mt-2">{course.description}</p>
+            <p className="text-sm mt-2 text-[#4A235A]">{course.description}</p>
           </div>
         ))}
       </div>

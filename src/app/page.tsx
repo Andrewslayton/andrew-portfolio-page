@@ -45,9 +45,9 @@ const HomePage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-black font-mono text-lg">
+    <div className="flex flex-col min-h-screen bg-gray-800 font-mono text-lg">
       <button
-        className="p-2 m-4 bg-gray-800 text-white rounded"
+        className="p-2 m-4 bg-gray-800 shadow-lg text-white rounded"
         onClick={() => setIsCubeEnabled(!isCubeEnabled)}
       >
         {isCubeEnabled ? "Disable Cube" : "Enable Cube"}
