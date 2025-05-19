@@ -42,7 +42,7 @@ const staticProjects = [
     name: "GameMods",
     url: "https://thunderstore.io/c/repo/p/REPODEMON/EnhancedGodMode/",
     description:
-      "Unity engine plugin for the game R.E.P.O that helps new players understand the game by making them invincible and spawning valuables. Hostered a community and over 14,000 downloads.",
+      "Unity engine plugin for the game R.E.P.O that helps new players understand the game by making them invincible and spawning valuables. Hostered a community and over 40,000 downloads.",
   },
 ];
 

@@ -11,13 +11,18 @@ export function Experience() {
             Software Developer / Jan 2024 - Current
           </p>
           <p className="text-sm sm:text-base mt-2">
-            -Developed web applications for clients using React, NextJs, 
-            Angular, and aspnetcore.
+            <br/>
+            -Rebuilt automative detailing internal tool with .Net 8 MVC 
+            <br/>
+                  Improved security, load speeds, and revenue turnout.
             <br />
-            -Created a supply item shop to manage inventory and pricing.
+            Deployed to multiple ec2 instances to suit multiple locations.
             <br />
-            -Worked in .NET to create efficient endpoints for our clients
-            applications.
+            -Created a supply item shop to manage inventory, pricing, and moving data.
+            <br />
+            -Built and refactored for multiple clients using .Net 8, React, Angular, and Next.js.
+            <br />
+            -Worked with clients to understand their needs and build software to meet those needs.
           </p>
         </div>
         <div className="bg-black rounded-lg shadow-lg p-4">
