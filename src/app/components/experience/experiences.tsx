@@ -2,7 +2,7 @@ import { experienceEntries } from "../../data/monopolyData";
 
 export function Experience() {
   return (
-    <div className="bg-[#D7BDE2] p-4 rounded-lg overflow-auto h-full w-4xl text-[#4A235A] pb-20">
+    <div className="bg-[#D7BDE2] p-4 rounded-lg w-full text-[#4A235A] pb-20">
       <h2 className="text-lg sm:text-xl font-bold text-[#4A235A] mb-4">
         Experience
       </h2>
