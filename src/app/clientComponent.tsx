@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 
 export default function ClientComponent() {
-  // Removed children from props
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
