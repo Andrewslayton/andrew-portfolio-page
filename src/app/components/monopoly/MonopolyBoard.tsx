@@ -300,5 +300,3 @@ export const MonopolyBoard: React.FC = () => {
 };
 
 export default MonopolyBoard;
-
-
