@@ -186,12 +186,7 @@ export type BoardSquare = {
   kind?: "content" | "start" | "spacer" | "end";
 };
 
-// Squares for the Monopoly-style board.
-// Each entry in a section becomes its own square so that
-// \"city size\" is proportional to how much content is in that section.
-// We also insert a START square and spacer squares between major areas.
 export const boardSquares: BoardSquare[] = [
-  // Start square
   {
     id: "start",
     section: "meta",
@@ -201,7 +196,6 @@ export const boardSquares: BoardSquare[] = [
       "Use the arrow keys to drive around the board and explore Andrew's experience, projects, education, blog, and more.",
   },
 
-  // Experience (3 squares)
   ...experienceEntries.map((exp) => ({
     id: `experience-${exp.id}`,
     section: "experience" as const,
@@ -211,7 +205,6 @@ export const boardSquares: BoardSquare[] = [
     description: exp.description,
   })),
 
-  // Spacer between Experience and Projects
   {
     id: "spacer-experience-projects",
     section: "meta",
@@ -219,7 +212,6 @@ export const boardSquares: BoardSquare[] = [
     title: "",
   },
 
-  // Projects (6 squares)
   ...projectEntries.map((project) => ({
     id: `projects-${project.id}`,
     section: "projects" as const,
@@ -228,7 +220,6 @@ export const boardSquares: BoardSquare[] = [
     description: project.description,
   })),
 
-  // Spacer between Projects and Education
   {
     id: "spacer-projects-education",
     section: "meta",
@@ -236,7 +227,6 @@ export const boardSquares: BoardSquare[] = [
     title: "",
   },
 
-  // Education (one square per course)
   ...educationCourses.map((course) => ({
     id: `education-${course.id}`,
     section: "education" as const,
@@ -245,7 +235,6 @@ export const boardSquares: BoardSquare[] = [
     description: course.description,
   })),
 
-  // Spacer between Education and Blog
   {
     id: "spacer-education-blog",
     section: "meta",
@@ -253,7 +242,6 @@ export const boardSquares: BoardSquare[] = [
     title: "",
   },
 
-  // Blog (one square per entry)
   ...blogEntries.map((blog) => ({
     id: `blog-${blog.id}`,
     section: "blog" as const,
@@ -262,7 +250,6 @@ export const boardSquares: BoardSquare[] = [
     description: blog.description,
   })),
 
-  // Spacer between Blog and About
   {
     id: "spacer-blog-about",
     section: "meta",
@@ -270,7 +257,6 @@ export const boardSquares: BoardSquare[] = [
     title: "",
   },
 
-  // About (single square representing the about section)
   {
     id: "about-main",
     section: "about",
@@ -280,7 +266,6 @@ export const boardSquares: BoardSquare[] = [
       "Learn more about who Andrew is, his love for adventure, and how he fell in love with tinkering and computer science.",
   },
 
-  // Spacer between About and What's New
   {
     id: "spacer-about-whatsnew",
     section: "meta",
@@ -288,7 +273,6 @@ export const boardSquares: BoardSquare[] = [
     title: "",
   },
 
-  // What's New (multiple squares to hint at dynamic GitHub activity)
   {
     id: "whats-new-1",
     section: "whats-new",
@@ -320,7 +304,6 @@ export const boardSquares: BoardSquare[] = [
     description: "Dive into the newest updates pulled directly from GitHub.",
   },
 
-  // End square
   {
     id: "end",
     section: "meta",

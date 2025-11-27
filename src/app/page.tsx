@@ -28,19 +28,17 @@ const HomePage = () => {
       >
         {isSimpleExperience ? "Monopoly experience" : "Simple experience"}
       </button>
-      <div
-        className={`flex-1 flex items-center justify-center ${
-          isSimpleExperience ? "overflow-y-auto" : ""
-        }`}
-      >
+      <div className="flex-1 flex items-center justify-center">
         {isSimpleExperience ? (
-          <div className="flex flex-col space-y-4 p-4">
-            <Aboutme />
-            <Education />
-            <Experience />
-            <Projects />
-            <WhatsNew />
-            <Blog />
+          <div className="w-full h-full overflow-y-auto flex justify-center">
+            <div className="flex flex-col space-y-4 p-4 max-w-4xl w-full">
+              <Aboutme />
+              <Education />
+              <Experience />
+              <Projects />
+              <WhatsNew />
+              <Blog />
+            </div>
           </div>
         ) : (
           <MonopolyBoard />

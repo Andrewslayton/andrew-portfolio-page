@@ -6,9 +6,7 @@ import { boardSquares, BoardSquare } from "../../data/monopolyData";
 type Coord = { row: number; col: number };
 
 function buildPerimeterCoords(squareCount: number): Coord[] {
-  // Find the smallest square grid whose perimeter can fit all squares
   let side = 3;
-  // Perimeter cell count for an N x N grid
   const perimeterCells = (n: number) => 4 * n - 4;
 
   while (perimeterCells(side) < squareCount) {
@@ -17,19 +15,15 @@ function buildPerimeterCoords(squareCount: number): Coord[] {
 
   const coords: Coord[] = [];
 
-  // Bottom row: left -> right
   for (let col = 0; col < side; col++) {
     coords.push({ row: side - 1, col });
   }
-  // Right column: bottom-1 -> top
   for (let row = side - 2; row >= 0; row--) {
     coords.push({ row, col: side - 1 });
   }
-  // Top row: right-1 -> left
   for (let col = side - 2; col >= 0; col--) {
     coords.push({ row: 0, col });
   }
-  // Left column: top+1 -> bottom-1
   for (let row = 1; row <= side - 2; row++) {
     coords.push({ row, col: 0 });
   }
@@ -40,19 +34,19 @@ function buildPerimeterCoords(squareCount: number): Coord[] {
 function getSectionColor(section: BoardSquare["section"]): string {
   switch (section) {
     case "about":
-      return "#FDE68A"; // warm yellow
+      return "#FDE68A";
     case "education":
-      return "#BFDBFE"; // soft blue
+      return "#BFDBFE";
     case "experience":
-      return "#FCA5A5"; // soft red
+      return "#FCA5A5";
     case "projects":
-      return "#A7F3D0"; // mint green
+      return "#A7F3D0";
     case "whats-new":
-      return "#DDD6FE"; // soft purple
+      return "#DDD6FE";
     case "blog":
-      return "#F9A8D4"; // pink
+      return "#F9A8D4";
     case "meta":
-      return "#111827"; // dark meta tiles (start/spacers)
+      return "#111827";
     default:
       return "#E5E7EB";
   }
@@ -61,7 +55,6 @@ function getSectionColor(section: BoardSquare["section"]): string {
 function getTileColor(index: number): string {
   const square = boardSquares[index];
 
-  // Explicit colors for special kinds
   if (square.kind === "start") {
     return "#111827";
   }
@@ -70,7 +63,6 @@ function getTileColor(index: number): string {
   }
 
   if (square.kind === "spacer") {
-    // Inherit the color from the previous non-spacer tile
     for (let i = index - 1; i >= 0; i--) {
       const prev = boardSquares[i];
       if (prev.kind === "content") {
@@ -82,8 +74,6 @@ function getTileColor(index: number): string {
     }
     return "#111827";
   }
-
-  // Regular content tiles
   return getSectionColor(square.section);
 }
 
