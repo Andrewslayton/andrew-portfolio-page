@@ -65,6 +65,9 @@ function getTileColor(index: number): string {
   if (square.kind === "start") {
     return "#111827";
   }
+  if (square.kind === "end") {
+    return "#111827";
+  }
 
   if (square.kind === "spacer") {
     // Inherit the color from the previous non-spacer tile
@@ -219,7 +222,7 @@ export const MonopolyBoard: React.FC = () => {
                     </p>
                   </>
                 )}
-                {square.kind === "start" && (
+                {(square.kind === "start" || square.kind === "end") && (
                   <p className="text-[0.65rem] sm:text-xs font-bold text-gray-100 uppercase tracking-wide">
                     {square.title}
                   </p>
@@ -235,12 +238,14 @@ export const MonopolyBoard: React.FC = () => {
                     style={{
                       transform:
                         lastDirection === "up"
-                          ? "rotate(-90deg)"
-                          : lastDirection === "down"
                           ? "rotate(90deg)"
-                          : lastDirection === "left"
-                          ? "rotate(180deg)"
+                          : lastDirection === "down"
+                          ? "rotate(-90deg)"
+                          : lastDirection === "right"
+                          ? "scaleX(-1)"
                           : "rotate(0deg)",
+                      mixBlendMode: "multiply",
+                      borderRadius: "999px",
                     }}
                   />
                 </div>

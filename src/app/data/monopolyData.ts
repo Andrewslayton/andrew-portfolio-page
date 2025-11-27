@@ -183,7 +183,7 @@ export type BoardSquare = {
   title: string;
   subtitle?: string;
   description?: string;
-  kind?: "content" | "start" | "spacer";
+  kind?: "content" | "start" | "spacer" | "end";
 };
 
 // Squares for the Monopoly-style board.
@@ -318,5 +318,14 @@ export const boardSquares: BoardSquare[] = [
     kind: "content",
     title: "GitHub Activity IV",
     description: "Dive into the newest updates pulled directly from GitHub.",
+  },
+
+  // End square
+  {
+    id: "end",
+    section: "meta",
+    kind: "end",
+    title: "END",
+    description: "Loop back to START and keep exploring.",
   },
 ];
