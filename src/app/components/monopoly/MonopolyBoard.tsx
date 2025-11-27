@@ -92,8 +92,11 @@ export const MonopolyBoard: React.FC = () => {
 
   const [activeIndex, setActiveIndex] = useState(initialIndex);
   const [showPopup, setShowPopup] = useState(false);
+  const [lastDirection, setLastDirection] = useState<
+    "up" | "down" | "left" | "right"
+  >("right");
 
-  const { coords, side } = useMemo(() => {
+  const { coords, side, indexByCoord } = useMemo(() => {
     const count = boardSquares.length;
     let gridSide = 3;
     const perimeterCells = (n: number) => 4 * n - 4;
@@ -101,39 +104,59 @@ export const MonopolyBoard: React.FC = () => {
       gridSide += 1;
     }
     const coords = buildPerimeterCoords(count);
-    return { coords, side: gridSide };
+
+    const indexByCoord: Record<string, number> = {};
+    coords.forEach((coord, index) => {
+      indexByCoord[`${coord.row}-${coord.col}`] = index;
+    });
+
+    return { coords, side: gridSide, indexByCoord };
   }, []);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-        setActiveIndex((prev) => {
-          const next = (prev + 1) % boardSquares.length;
-          const square = boardSquares[next];
-          if (square.kind === "content") {
-            setShowPopup(true);
-          } else {
-            setShowPopup(false);
-          }
-          return next;
-        });
-      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-        setActiveIndex((prev) => {
-          const next = (prev - 1 + boardSquares.length) % boardSquares.length;
-          const square = boardSquares[next];
-          if (square.kind === "content") {
-            setShowPopup(true);
-          } else {
-            setShowPopup(false);
-          }
-          return next;
-        });
-      }
+      let direction: "up" | "down" | "left" | "right" | null = null;
+      if (event.key === "ArrowUp") direction = "up";
+      if (event.key === "ArrowDown") direction = "down";
+      if (event.key === "ArrowLeft") direction = "left";
+      if (event.key === "ArrowRight") direction = "right";
+
+      if (!direction) return;
+
+      setActiveIndex((prev) => {
+        const currentCoord = coords[prev];
+        if (!currentCoord) return prev;
+
+        let nextRow = currentCoord.row;
+        let nextCol = currentCoord.col;
+
+        if (direction === "up") nextRow -= 1;
+        if (direction === "down") nextRow += 1;
+        if (direction === "left") nextCol -= 1;
+        if (direction === "right") nextCol += 1;
+
+        const key = `${nextRow}-${nextCol}`;
+        const maybeNext = indexByCoord[key];
+
+        if (maybeNext === undefined) {
+          return prev;
+        }
+
+        const square = boardSquares[maybeNext];
+        if (square.kind === "content") {
+          setShowPopup(true);
+        } else {
+          setShowPopup(false);
+        }
+
+        setLastDirection(direction);
+        return maybeNext;
+      });
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [coords, indexByCoord]);
 
   const activeSquare = boardSquares[activeIndex];
 
@@ -205,10 +228,21 @@ export const MonopolyBoard: React.FC = () => {
 
               {isActive && (
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="relative w-6 h-4 sm:w-8 sm:h-5 bg-gray-200 rounded-md border-2 border-gray-900 shadow-md">
-                    <div className="absolute -bottom-1 left-0.5 w-2 h-2 bg-gray-900 rounded-full" />
-                    <div className="absolute -bottom-1 right-0.5 w-2 h-2 bg-gray-900 rounded-full" />
-                  </div>
+                  <img
+                    src="/board-car.jpg"
+                    alt="Player car"
+                    className="w-8 h-auto sm:w-10"
+                    style={{
+                      transform:
+                        lastDirection === "up"
+                          ? "rotate(-90deg)"
+                          : lastDirection === "down"
+                          ? "rotate(90deg)"
+                          : lastDirection === "left"
+                          ? "rotate(180deg)"
+                          : "rotate(0deg)",
+                    }}
+                  />
                 </div>
               )}
             </div>
