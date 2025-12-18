@@ -37,7 +37,7 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     id: "compose",
     company: "Compose",
-    role: "Software Developer",
+    role: "Software Engineer",
     period: "Jan 2024 - Current",
     description:
       "- Rebuilt automotive detailing internal tool with .NET 8 MVC, improving security, load speeds, and revenue turnout.\n" +
@@ -49,9 +49,11 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     id: "best-buy",
     company: "Best Buy",
-    role: "Product Flow Specialist",
-    period: "Jan 2024 - Current",
-    description: "",
+    role: "Associate Software Engineer Intern",
+    period: "June 2025- Aug 2025",
+    description: "Created a middleware service to preemtively error out invalid search requests on the products page to protect from bots. \n"+
+    "Contributed to packaging my teams application into an embedded package for use in other teams applications. \n"+
+    "Worked in an Agile environment, attending daily standups and bi-weekly sprint planning meetings. \n",
   },
   {
     id: "canadian-lakes",
@@ -193,7 +195,7 @@ export const boardSquares: BoardSquare[] = [
     kind: "start",
     title: "START",
     description:
-      "Use the arrow keys to drive around the board and explore Andrew's experience, projects, education, blog, and more.",
+      "Use the arrow keys to navigate through my portfolio!",
   },
 
   ...experienceEntries.map((exp) => ({
