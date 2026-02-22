@@ -253,57 +253,34 @@ export const boardSquares: BoardSquare[] = [
   })),
 
   {
-    id: "spacer-blog-about",
-    section: "meta",
-    kind: "spacer",
-    title: "",
-  },
-
-  {
-    id: "about-main",
-    section: "about",
-    kind: "content",
-    title: "About Andrew",
-    description:
-      "Learn more about who Andrew is, his love for adventure, and how he fell in love with tinkering and computer science.",
-  },
-
-  {
-    id: "spacer-about-whatsnew",
-    section: "meta",
-    kind: "spacer",
-    title: "",
-  },
-
-  {
     id: "whats-new-1",
     section: "whats-new",
     kind: "content",
-    title: "GitHub Activity I",
+    title: "Loading GitHub Activity...",
     description:
-      "Peek at the latest GitHub commits and projects Andrew has been working on.",
+      "",
   },
   {
     id: "whats-new-2",
     section: "whats-new",
     kind: "content",
-    title: "GitHub Activity II",
+    title: "Loading GitHub Activity...",
     description:
-      "More recent repositories and commit messages from Andrew's GitHub.",
+      "",
   },
   {
     id: "whats-new-3",
     section: "whats-new",
     kind: "content",
-    title: "GitHub Activity III",
-    description: "Explore Andrew's ongoing work and experiments.",
+    title: "Loading GitHub Activity...",
+    description: "",
   },
   {
     id: "whats-new-4",
     section: "whats-new",
     kind: "content",
-    title: "GitHub Activity IV",
-    description: "Dive into the newest updates pulled directly from GitHub.",
+    title: "Loading GitHub Activity...",
+    description: "",
   },
 
   {

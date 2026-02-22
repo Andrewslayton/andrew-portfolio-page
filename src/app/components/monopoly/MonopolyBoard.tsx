@@ -1,87 +1,16 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { boardSquares, BoardSquare } from "../../data/monopolyData";
-
-type Coord = { row: number; col: number };
-
-function buildPerimeterCoords(squareCount: number): Coord[] {
-  let side = 3;
-  const perimeterCells = (n: number) => 4 * n - 4;
-
-  while (perimeterCells(side) < squareCount) {
-    side += 1;
-  }
-
-  const coords: Coord[] = [];
-
-  for (let col = 0; col < side; col++) {
-    coords.push({ row: side - 1, col });
-  }
-  for (let row = side - 2; row >= 0; row--) {
-    coords.push({ row, col: side - 1 });
-  }
-  for (let col = side - 2; col >= 0; col--) {
-    coords.push({ row: 0, col });
-  }
-  for (let row = 1; row <= side - 2; row++) {
-    coords.push({ row, col: 0 });
-  }
-
-  return coords.slice(0, squareCount);
-}
-
-function getSectionColor(section: BoardSquare["section"]): string {
-  switch (section) {
-    case "about":
-      return "#FDE68A";
-    case "education":
-      return "#BFDBFE";
-    case "experience":
-      return "#FCA5A5";
-    case "projects":
-      return "#A7F3D0";
-    case "whats-new":
-      return "#DDD6FE";
-    case "blog":
-      return "#F9A8D4";
-    case "meta":
-      return "#111827";
-    default:
-      return "#E5E7EB";
-  }
-}
-
-function getTileColor(index: number): string {
-  const square = boardSquares[index];
-
-  if (square.kind === "start") {
-    return "#111827";
-  }
-  if (square.kind === "end") {
-    return "#111827";
-  }
-
-  if (square.kind === "spacer") {
-    for (let i = index - 1; i >= 0; i--) {
-      const prev = boardSquares[i];
-      if (prev.kind === "content") {
-        return getSectionColor(prev.section);
-      }
-      if (prev.kind === "start") {
-        return "#111827";
-      }
-    }
-    return "#111827";
-  }
-  return getSectionColor(square.section);
-}
+import { boardSquares as initialBoardSquares, BoardSquare } from "../../data/monopolyData";
+import { buildPerimeterCoords, getTileColor } from "./utils";
+import { useGithubCommits } from "./useGithubCommits";
+import { MonopolyPopup } from "./MonopolyPopup";
 
 export const MonopolyBoard: React.FC = () => {
   const initialIndex =
-    boardSquares.findIndex((s) => s.kind === "start") === -1
+    initialBoardSquares.findIndex((s) => s.kind === "start") === -1
       ? 0
-      : boardSquares.findIndex((s) => s.kind === "start");
+      : initialBoardSquares.findIndex((s) => s.kind === "start");
 
   const [activeIndex, setActiveIndex] = useState(initialIndex);
   const [showPopup, setShowPopup] = useState(false);
@@ -89,8 +18,28 @@ export const MonopolyBoard: React.FC = () => {
     "up" | "down" | "left" | "right"
   >("right");
 
+  const githubCommits = useGithubCommits();
+
+  const boardSquares = useMemo(() => {
+    if (githubCommits.length === 0) return initialBoardSquares;
+    let commitIndex = 0;
+    return initialBoardSquares.map((square) => {
+      if (square.section === "whats-new" && commitIndex < githubCommits.length) {
+        const commit = githubCommits[commitIndex];
+        commitIndex++;
+        return {
+          ...square,
+          title: commit.message.length > 30 ? commit.message.substring(0, 30) + "..." : commit.message,
+          subtitle: `Commit to ${commit.repo}`,
+          description: `Date: ${commit.date}\nRepo: ${commit.repo}\nMessage: ${commit.message}`,
+        };
+      }
+      return square;
+    });
+  }, [githubCommits]);
+
   const { coords, side, indexByCoord } = useMemo(() => {
-    const count = boardSquares.length;
+    const count = initialBoardSquares.length;
     let gridSide = 3;
     const perimeterCells = (n: number) => 4 * n - 4;
     while (perimeterCells(gridSide) < count) {
@@ -149,7 +98,7 @@ export const MonopolyBoard: React.FC = () => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [coords, indexByCoord]);
+  }, [coords, indexByCoord, boardSquares]);
 
   const activeSquare = boardSquares[activeIndex];
 
@@ -176,7 +125,7 @@ export const MonopolyBoard: React.FC = () => {
         {boardSquares.map((square, index) => {
           const coord = coords[index];
           const isActive = index === activeIndex;
-          const tileColor = getTileColor(index);
+          const tileColor = getTileColor(index, boardSquares);
 
           return (
             <div
@@ -261,34 +210,10 @@ export const MonopolyBoard: React.FC = () => {
       </div>
 
       {showPopup && activeSquare && (
-        <div className="fixed inset-0 flex items-center justify-center z-40">
-          <div
-            className="absolute inset-0 bg-black bg-opacity-60"
-            onClick={() => setShowPopup(false)}
-          />
-          <div className="relative bg-gray-900 text-gray-100 max-w-lg w-[90%] rounded-xl shadow-2xl border border-gray-700 p-5 z-50">
-            <button
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-200 text-sm"
-              onClick={() => setShowPopup(false)}
-            >
-              Close
-            </button>
-            <p className="text-xs uppercase tracking-wide text-gray-400 mb-1">
-              {activeSquare.section.replace("-", " ")}
-            </p>
-            <h2 className="text-xl font-bold mb-1">{activeSquare.title}</h2>
-            {activeSquare.subtitle && (
-              <p className="text-sm text-gray-300 mb-2">
-                {activeSquare.subtitle}
-              </p>
-            )}
-            {activeSquare.description && (
-              <p className="text-sm text-gray-200 whitespace-pre-line">
-                {activeSquare.description}
-              </p>
-            )}
-          </div>
-        </div>
+        <MonopolyPopup
+          activeSquare={activeSquare}
+          onClose={() => setShowPopup(false)}
+        />
       )}
     </div>
   );
