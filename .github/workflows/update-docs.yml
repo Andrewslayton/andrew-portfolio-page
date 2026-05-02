@@ -1,0 +1,48 @@
+name: AI Documentation Update
+
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+
+jobs:
+  update-docs:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed
+        run: |
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.merge_commit_sha }}"
+          FILES=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- 'src/**' 'lib/**' 'app/**' | grep -v '\.test\.' | grep -v '__tests__')
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$FILES" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Build payload and trigger update
+        if: steps.changed.outputs.files != ''
+        run: |
+          FILES="${{ steps.changed.outputs.files }}"
+          REPO_NAME="${{ github.event.repository.name }}"
+          CHANGED_ARRAY=$(echo "$FILES" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          CODE_CONTENTS="{}"
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            if [ -f "$file" ]; then
+              CONTENT=$(jq -Rs . < "$file")
+              CODE_CONTENTS=$(echo "$CODE_CONTENTS" | jq --arg key "$file" --argjson val "$CONTENT" '. + {($key): $val}')
+            fi
+          done <<< "$FILES"
+          PAYLOAD=$(jq -n --argjson files "$CHANGED_ARRAY" --argjson contents "$CODE_CONTENTS" --arg repo "$REPO_NAME" \
+            '{ repo: $repo, changedFiles: $files, codeContents: $contents }')
+          curl -X POST "${{ secrets.EASYDOCS_URL }}/api/v1/update/doc" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.EASYDOCS_API_SECRET }}" \
+            -d "$PAYLOAD" \
+            --fail --silent --show-error
