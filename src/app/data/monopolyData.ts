@@ -35,33 +35,37 @@ export type BlogEntry = {
 
 export const experienceEntries: ExperienceEntry[] = [
   {
+    id: "best-buy-associate-software-engineer",
+    company: "Best Buy",
+    role: "Associate Software Engineer",
+    period: "Feb. 2026 – Present",
+    description:
+      "• Contributed to performance improvements that reduced mobile application memory leaks by 85%.\n" +
+      "• Reduced unnecessary component re-renders by up to 20x through targeted React Native refactoring.\n" +
+      "• Develop mobile-focused features within a unified architecture supporting both mobile and web platforms.\n" +
+      "• Collaborate across engineering teams to build and integrate Product Display Page features using React Native, TypeScript, and GraphQL.\n" +
+      "• Triage and resolve high-priority platform-specific issues across the mobile application.",
+  },
+  {
+    id: "best-buy-intern",
+    company: "Best Buy",
+    role: "Associate Software Engineer Intern",
+    period: "Jun. 2025 – Aug. 2025",
+    description:
+      "• Investigated bot traffic and developed middleware to route malformed search queries to 404 responses.\n" +
+      "• Contributed to a reusable React and GraphQL package enabling the Product List Page to be embedded across multiple component teams.",
+  },
+  {
     id: "compose",
     company: "Compose",
     role: "Software Engineer",
-    period: "Jan 2024 - Current",
+    period: "Dec. 2024 – Jan. 2026",
     description:
-      "- Rebuilt automotive detailing internal tool with .NET 8 MVC, improving security, load speeds, and revenue turnout.\n" +
-      "- Deployed to multiple EC2 instances to serve multiple locations.\n" +
-      "- Created a supply item shop to manage inventory, pricing, and data movement.\n" +
-      "- Built and refactored for multiple clients using .NET 8, React, Angular, and Next.js.\n" +
-      "- Worked directly with clients to understand their needs and build software to meet those needs.",
-  },
-  {
-    id: "best-buy",
-    company: "Best Buy",
-    role: "Associate Software Engineer Intern",
-    period: "June 2025- Aug 2025",
-    description: "Created a middleware service to preemtively error out invalid search requests on the products page to protect from bots. \n"+
-    "Contributed to packaging my teams application into an embedded package for use in other teams applications. \n"+
-    "Worked in an Agile environment, attending daily standups and bi-weekly sprint planning meetings. \n",
-  },
-  {
-    id: "canadian-lakes",
-    company: "Canadian Lakes Organization",
-    role: "Groundskeeper",
-    period: "May 2022 - Aug 2024",
-    description:
-      "Individually maintained one of three golf courses in the Canadian Lakes area.",
+      "• Led the architecture and development of a car detailing platform processing more than 1,000 vehicles per month.\n" +
+      "• Designed and developed event-driven .NET 8 applications to process daily vehicle data through SFTP in coordination with vAuto.\n" +
+      "• Automated database migrations across 13 AWS EC2 instances, synchronizing schema changes in under 2 minutes.\n" +
+      "• Contributed to migrating deployments from AWS EC2 to AWS ECS, reducing cloud infrastructure costs by approximately $1,000 per month.\n" +
+      "• Partnered directly with clients to design configurable features while minimizing performance and maintenance overhead.",
   },
 ];
 

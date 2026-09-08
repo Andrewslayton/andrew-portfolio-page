@@ -18,7 +18,7 @@ type Section =
   | null;
 
 const HomePage = () => {
-  const [isSimpleExperience, setIsSimpleExperience] = useState(false);
+  const [isSimpleExperience, setIsSimpleExperience] = useState(true);
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-800 font-mono text-lg">
